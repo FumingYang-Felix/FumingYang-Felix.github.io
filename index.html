@@ -271,6 +271,7 @@
           <button class="btn" data-filter="all">All</button>
           <button class="btn" data-filter="neuro">Neuroscience</button>
           <button class="btn" data-filter="cs">CS / ML</button>
+          <button class="btn" data-filter="other">Other</button>
           <a class="btn" href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar →</a>
         </div>
         <div id="publist"></div>
@@ -279,13 +280,38 @@
       <script>
         // === Publication data (extend this list as needed) ===
         const publications = [
+          // --- Neuroscience & Systems ---
+          {
+            title: 'Cellular and synaptic organization of the Octopus vertical lobe',
+            authors: 'F. Bidel, Y. Meirovitch, F. Yang, J.W. Lichtman, B. Hochner',
+            venue: 'bioRxiv preprint',
+            year: 2025,
+            track: 'neuro',
+            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+          },
           {
             title: 'Connectomic evidence that ordered activity drives neuromuscular network formation',
             authors: 'Fuming (Felix) Yang et al.',
-            venue: 'under review at Nature Neuroscience',
+            venue: 'under review at Nature Neuroscience (bioRxiv: Neuromuscular connectomes across development reveal synaptic ordering rules)',
             year: 2025,
             track: 'neuro',
-            links: { pdf: '#', other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+            links: { pdf: 'https://www.biorxiv.org/content/10.1101/2021.09.20.460480', other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+          },
+          {
+            title: 'Connectomics of the Octopus vulgaris vertical lobe provides insight into conserved and novel principles of a memory acquisition network',
+            authors: 'F. Bidel, Y. Meirovitch, R.L. Schalek, X. Lu, E.C. Pavarino, F. Yang, A. Peleg, ...',
+            venue: 'eLife 12: e84257',
+            year: 2023,
+            track: 'neuro',
+            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+          },
+          {
+            title: 'mEMbrain: an interactive deep learning MATLAB tool for connectomic segmentation on commodity desktops',
+            authors: 'E.C. Pavarino, E. Yang, N. Dhanyasi, M.D. Wang, F. Bidel, X. Lu, F. Yang, ...',
+            venue: 'Frontiers in Neural Circuits 17: 952921',
+            year: 2023,
+            track: 'neuro',
+            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
           },
           {
             title: 'WaferTools: wafer‑to‑volume electron microscopy pipeline',
@@ -295,6 +321,8 @@
             track: 'neuro',
             links: { pdf: '#', code: '#', project: '#' }
           },
+
+          // --- CS / ML & Theory ---
           {
             title: 'Near‑linear seriation on sparse similarity graphs',
             authors: 'Fuming (Felix) Yang et al.',
@@ -310,10 +338,21 @@
             year: 2025,
             track: 'cs',
             links: { pdf: '#', code: '#', slides: '#' }
+          },
+
+          // --- Other ---
+          {
+            title: 'The Narrative Coherence of Autistic Children’s Accounts of an Experienced Event in Response to Different Interviewer Prompts: A Longitudinal Study',
+            authors: 'T.S. Almeida, F. Yang, H. Zhang, M.E. Lamb',
+            venue: 'Journal of Autism and Developmental Disorders',
+            year: 2024,
+            track: 'other',
+            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
           }
         ];
 
         const publist = document.getElementById('publist');
+        const trackLabel = { neuro: 'neuroscience', cs: 'cs/ml', other: 'other' };
         const render = (flt='all') => {
           const items = publications
             .filter(p => flt==='all' ? true : p.track===flt)
@@ -323,7 +362,7 @@
               <strong>${p.title}</strong> <span class="muted">(${p.year})</span><br/>
               ${p.authors} · ${p.venue}
               <div class="badges">
-                <span class="badge">${p.track==='neuro'?'neuroscience':'cs/ml'}</span>
+                <span class="badge">${trackLabel[p.track]||p.track}</span>
               </div>
               <div style="margin-top:6px">
                 ${p.links?.pdf?`<a href="${p.links.pdf}" target="_blank">PDF</a>`:''}
