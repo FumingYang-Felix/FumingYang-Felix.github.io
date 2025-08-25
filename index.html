@@ -175,16 +175,30 @@
     @keyframes pulse{ 0%{transform:scale(.95)} 50%{transform:scale(1.08)} 100%{transform:scale(.95)} }
     @media (prefers-reduced-motion:reduce){ .edge.dashed{animation:none} .pulse{animation:none} }
 
-    /* === Medium inline layout for Interest === */
-    .interest-inline{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:10px 0 0}
-    .gnn-inline{width:min(420px,48vw);margin:0}
-    .gnn-inline .gnn-card{border-radius:16px}
-    .gnn-inline .edge{stroke-width:3.2}
-    .gnn-inline .node{stroke-width:2}
-    .gnn-inline .gnn-glow{display:none} /* 收掉大光晕 */
-    .interest-text{font-size:clamp(15px,2vw,18px);line-height:1.6;max-width:70ch}
-    .interest-text strong{margin-right:6px}
-    @media (max-width:700px){.interest-inline{align-items:flex-start}}
+/* === 2-column layout for Interest (animation left, text right) === */
+.interest-inline{
+  display:grid;
+  grid-template-columns: min(420px, 42vw) 1fr; /* 左列固定上限，右列自适应 */
+  align-items:center;
+  gap:16px 24px;
+  margin:12px 0 0;
+}
+.gnn-inline{ width:100%; margin:0 }          /* 占满左列 */
+.gnn-inline .gnn-card{ border-radius:16px }
+.gnn-inline .edge{ stroke-width:3.2 }
+.gnn-inline .node{ stroke-width:2 }
+.gnn-inline .gnn-glow{ display:none }        /* 去掉大光晕，避免喧宾夺主 */
+
+.interest-text{
+  font-size:clamp(15px,2vw,18px);
+  line-height:1.6;
+  max-width:70ch;
+}
+
+@media (max-width: 820px){
+  .interest-inline{ grid-template-columns: 1fr; } /* 小屏堆叠 */
+}
+
   </style>
 </head>
 <body>
@@ -214,34 +228,31 @@
       <h1 class="title"> Hey! I'm Fuming Yang ;) </h1>
 
       <!-- Interests (medium inline GNN + text) -->
-      <section id="interests" class="interest-inline">
-        <!-- GNN (skull-ish layout), 缩到中等宽度 -->
-        <div class="gnn-wrap gnn-inline">
-          <div class="gnn-card">
-            <svg class="gnn-stage" viewBox="0 0 900 380" role="img" aria-label="Animated Graph Neural Network">
-              <defs>
-                <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%"  stop-color="var(--gnn-edge1)"/>
-                  <stop offset="100%" stop-color="var(--gnn-edge2)"/>
-                </linearGradient>
-                <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <g id="edges"></g>
-              <g id="nodes"></g>
-              <g id="messages" filter="url(#softGlow)"></g>
-            </svg>
-            <div class="gnn-glow" aria-hidden="true"></div>
-          </div>
-        </div>
+<section id="interests" class="interest-inline">
+  <!-- 左列：GNN 动图（保持你现有 SVG 与脚本） -->
+  <div class="gnn-wrap gnn-inline">
+    <div class="gnn-card">
+      <svg class="gnn-stage" viewBox="0 0 900 380" role="img" aria-label="Animated Graph Neural Network">
+        <!-- defs / groups 同你当前代码 -->
+        <defs> … </defs>
+        <g id="edges"></g>
+        <g id="nodes"></g>
+        <g id="messages" filter="url(#softGlow)"></g>
+      </svg>
+      <div class="gnn-glow" aria-hidden="true"></div>
+    </div>
+  </div>
 
-        <!-- Interest text -->
-        <div class="interest-text">
-          <strong>Interest:</strong>
-          to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain &amp; math.
-        </div>
-      </section>
+  <!-- 右列：Interest 文案（独立 div） -->
+  <div class="interest-text">
+    <strong>Interest:</strong>
+    to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to,
+    the challenges of human brain &amp; math.
+  </div>
+</section>
+
+<!-- 紧随其后保留你的 <script>（绘制边/点/消息的那段） -->
+
 
       <!-- GNN script -->
       <script>
