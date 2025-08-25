@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#0ea5e9" />
   <!-- OpenGraph / Twitter -->
   <meta property="og:title" content="Fuming (Felix) Yang" />
-  <meta property="og:description" content="Near‑linear seriation · WaferTools · Bio‑inspired sparsity (SP‑in/out)." />
+  <meta property="og:description" content="Near-linear seriation · WaferTools · Bio-inspired sparsity (SP-in/out)." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -38,10 +38,13 @@
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
-      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      color: rgb(var(--fg)); background: rgb(var(--bg));
-      background-image: radial-gradient(60% 40% at 0% -10%, rgba(14,165,233,.18), transparent 60%),
-                        radial-gradient(40% 50% at 100% 0%, rgba(99,102,241,.12), transparent 60%);
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+      color: rgb(var(--fg));
+      background: rgb(var(--bg));
+      background-image:
+        radial-gradient(60% 40% at 0% -10%, rgba(14,165,233,.18), transparent 60%),
+        radial-gradient(40% 50% at 100% 0%, rgba(99,102,241,.12), transparent 60%);
       transition: background-color .3s ease, color .3s ease;
     }
     a { color: rgb(var(--accent1)); text-decoration: none; }
@@ -56,18 +59,40 @@
     .dark header { background: linear-gradient(to bottom, rgba(3,7,18,.7), rgba(3,7,18,0)); }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
-    .brand .dot { width: 10px; height: 10px; border-radius: 999px; background: linear-gradient(135deg, rgb(var(--accent1)), rgb(var(--accent2))); box-shadow: 0 0 0 3px rgba(var(--ring), .15); }
-    .navlinks { display: flex; gap: 18px; align-items: center; }
-    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 12px; border:1px solid rgba(var(--fg), .08); background: rgba(var(--card), .66); color: rgb(var(--fg)); box-shadow: var(--shadow); transition: transform .08s ease, box-shadow .2s ease, border-color .2s;
+    .brand .dot {
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, rgb(var(--accent1)), rgb(var(--accent2)));
+      box-shadow: 0 0 0 3px rgb(var(--ring)/.15);
     }
-    .btn:hover { transform: translateY(-1px); border-color: rgba(var(--ring), .5); }
-    .btn.primary { background: linear-gradient(135deg, rgba(var(--accent1), .95), rgba(var(--accent2), .95)); color: white; border: none; }
+    .navlinks { display: flex; gap: 18px; align-items: center; }
+    .btn, a.btn {
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px;
+      border-radius: 12px; border:1px solid rgb(var(--fg)/.08);
+      background: rgb(var(--card)/.66); color: rgb(var(--fg));
+      box-shadow: var(--shadow);
+      transition: transform .08s ease, box-shadow .2s ease, border-color .2s;
+    }
+    .btn:hover, a.btn:hover { transform: translateY(-1px); border-color: rgb(var(--ring)/.5); }
+    .btn.primary, a.btn.primary {
+      background: linear-gradient(135deg, rgb(var(--accent1)/.95), rgb(var(--accent2)/.95));
+      color: #fff; border: none;
+    }
 
     /* ---------------- Hero ---------------- */
     .hero { padding: 64px 0 28px; }
-    .hero .title { font-size: clamp(28px, 6vw, 48px); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+    .hero .title {
+      font-size: clamp(28px, 6vw, 48px);
+      line-height: 1.12; font-weight: 800; letter-spacing: -0.02em;
+      margin: 8px 0 12px;
+      /* 控制行宽让长句更好读；小屏自动放开 */
+      max-width: min(26ch, 100%);
+      hyphens: auto; overflow-wrap: anywhere;
+    }
     .hero .sub { color: rgb(var(--muted)); max-width: 70ch; }
-    .tagline { display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: 13px; background: rgba(var(--ring), .12); color: rgb(var(--accent1)); border: 1px solid rgba(var(--ring), .35); }
+    .tagline {
+      display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: 13px;
+      background: rgb(var(--ring)/.12); color: rgb(var(--accent1)); border: 1px solid rgb(var(--ring)/.35);
+    }
     .hero-cta { display:flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
 
     /* ---------------- Sections ---------------- */
@@ -78,36 +103,49 @@
 
     /* ---------------- Cards ---------------- */
     .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background: rgba(var(--card), .7); border: 1px solid rgba(var(--fg), .08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-    .card:hover { border-color: rgba(var(--ring), .5); }
+    .card {
+      background: rgb(var(--card)/.7); border: 1px solid rgb(var(--fg)/.08);
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+    }
+    .card:hover { border-color: rgb(var(--ring)/.5); }
     .card .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: .18em; color: rgb(var(--muted)); }
     .card h3 { margin: 6px 0 6px; font-size: 18px; }
-    .chip { display:inline-block; border: 1px solid rgba(var(--fg), .12); padding: 2px 8px; border-radius: 999px; font-size: 12px; margin-right: 6px; color: rgb(var(--muted)); }
+    .chip { display:inline-block; border: 1px solid rgb(var(--fg)/.12); padding: 2px 8px; border-radius: 999px; font-size: 12px; margin-right: 6px; color: rgb(var(--muted)); }
 
     /* ---------------- Timeline / News ---------------- */
     .timeline { display:grid; gap: 12px; }
     .item { display:flex; gap: 12px; align-items:flex-start; }
-    .dot2 { width:10px; height:10px; border-radius:999px; background: linear-gradient(135deg, rgba(var(--accent1), .9), rgba(var(--accent2), .9)); box-shadow: 0 0 0 3px rgba(var(--ring), .18); margin-top: 7px; }
+    .dot2 {
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, rgb(var(--accent1)/.9), rgb(var(--accent2)/.9));
+      box-shadow: 0 0 0 3px rgb(var(--ring)/.18); margin-top: 7px;
+    }
 
     /* ---------------- Publications ---------------- */
-    .pub { padding: 14px 0; border-bottom: 1px dashed rgba(var(--fg), .1); }
+    .pub { padding: 14px 0; border-bottom: 1px dashed rgb(var(--fg)/.1); }
     .pub:last-child { border-bottom: none; }
     .pub .badges { display:flex; flex-wrap:wrap; gap:8px; margin-top: 6px; }
-    .badge { font-size: 12px; padding: 3px 8px; border-radius: 999px; border:1px solid rgba(var(--fg), .1); background: rgba(var(--card), .6); }
-    .badge.under { border-color: rgba(var(--ring), .4); color: rgb(var(--accent1)); }
-    .badge.preprint { border-color: rgba(34,197,94,.5); color: rgb(34,197,94); }
+    .badge { font-size: 12px; padding: 3px 8px; border-radius: 999px; border:1px solid rgb(var(--fg)/.1); background: rgb(var(--card)/.6); }
+    .badge.under { border-color: rgb(var(--ring)/.4); color: rgb(var(--accent1)); }
+    .badge.preprint { border-color: rgb(34 197 94 / .5); color: rgb(34 197 94); }
 
     /* ---------------- Footer ---------------- */
     footer { padding: 40px 0 72px; color: rgb(var(--muted)); font-size: 14px; }
 
     /* ---------------- Flair ---------------- */
-    .underline-gradient { background: linear-gradient(90deg, rgba(var(--accent1),1), rgba(var(--accent2),1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .rings { position:absolute; inset: -40% -20% auto auto; width: 480px; height: 480px; background: radial-gradient(closest-side, rgba(var(--ring), .18), transparent 70%); filter: blur(20px); pointer-events:none; }
+    .underline-gradient { background: linear-gradient(90deg, rgba(14,165,233,1), rgba(99,102,241,1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .rings {
+      position:absolute; inset: -40% -20% auto auto; width: 480px; height: 480px;
+      background: radial-gradient(closest-side, rgb(var(--ring)/.18), transparent 70%);
+      filter: blur(20px); pointer-events:none;
+    }
     .card:hover .rings { opacity: .9; }
 
     @media (max-width: 640px) {
       nav .navlinks { display: none; }
       .hero { padding-top: 36px; }
+      .hero .title { max-width: 100%; }
     }
   </style>
 </head>
@@ -126,7 +164,7 @@
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
           <button id="themeBtn" class="btn" aria-label="Toggle theme">🌗 Theme</button>
-          <a class="btn primary" href="#" id="cvLink">Download CV</a>
+          <!-- Removed Download CV per your request -->
         </div>
       </nav>
     </div>
@@ -137,14 +175,13 @@
     <section class="hero">
       <span class="tagline">Research Fellow at Harvard University</span>
       <h1 class="title"> Hi! I'm Fuming Yang, aiming to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain & math.</h1>
-     <p><strong>Current role.</strong> I lead data‑acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high‑throughput quality‑control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91‑beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record‑speed imaging of large neural volumes.</p>
+      <p><strong>Current role.</strong> I lead data-acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91-beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#projects">See projects</a>
         <a class="btn" href="#publications">Latest papers</a>
         <a class="btn" href="#contact">Get in touch</a>
       </div>
     </section>
-
 
 <!-- Projects -->
 <section id="projects">
