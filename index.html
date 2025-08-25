@@ -185,6 +185,20 @@
 @keyframes ping{0%{transform:scale(.9);opacity:.7}50%{transform:scale(1.12);opacity:1}100%{transform:scale(.9);opacity:.7}}
 .pulse{animation:ping 1.8s ease-in-out infinite; transform-origin:center}
 @media (prefers-reduced-motion: reduce){ .pulse{animation:none} }
+    /* Brain × GNN mini-badge — crisp at 20–48px */
+.interest-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0}
+.interest-badge{
+  display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;
+  background:linear-gradient(135deg, rgb(var(--accent1)/.10), rgb(var(--accent2)/.10));
+  border:1px solid rgb(var(--ring)/.45); box-shadow:var(--shadow)
+}
+.interest-badge svg{width:24px;height:24px}
+
+/* high-contrast strokes & nodes */
+.icon-brain{fill:none; stroke: rgb(var(--fg)); stroke-opacity:.9; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round}
+.icon-link{stroke: rgb(var(--accent1)); stroke-width:2.2; stroke-linecap:round; fill:none}
+.icon-node{fill: rgb(var(--accent2))}
+
 
 
   </style>
@@ -217,39 +231,26 @@
       <h1 class="title"> Hey! I'm Fuming Yang ;) </br> </h1>
 <p class="interest-line">
   <span class="interest-badge" aria-hidden="true">
-    <!-- Brain × Graph (GNN) mini icon -->
-    <svg viewBox="0 0 36 36" role="img" aria-label="research interests: brain × graph">
-      <defs>
-        <linearGradient id="gnn-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" style="stop-color: rgb(var(--accent1));" />
-          <stop offset="1" style="stop-color: rgb(var(--accent2));" />
-        </linearGradient>
-      </defs>
-
-      <!-- simplified brain blob -->
-      <path class="gnn-brain"
-            d="M18 6c-3.2 0-5.8 2.3-5.8 5 0 .6.1 1.1.3 1.6
-               -1.6.9-2.7 2.3-2.7 4 0 2.2 1.6 3.8 3.6 4.2
-               -.2.5-.3 1-.3 1.6 0 2.3 2 4.2 4.9 4.2
-               2.9 0 5.2-2 5.2-4.6 0-.5-.1-1-.2-1.4
-               1.8-.6 3-2.1 3-3.9 0-2.8-2.3-4.9-5.2-5
-               -.7-2.3-3-3.7-5-3.7z"
-            opacity=".95"/>
-
-      <!-- inner sulcus hint -->
-      <path d="M15 12c1.4 1 2.3 2.2 2.9 3.9" stroke="currentColor" stroke-width="1" opacity=".55" fill="none"/>
-
-      <!-- graph edges -->
-      <line x1="19.5" y1="11" x2="26.5" y2="14.5" class="gnn-link"/>
-      <line x1="16"   y1="15.5" x2="23"   y2="22"   class="gnn-link"/>
-      <line x1="23"   y1="22"   x2="28.5" y2="18.2" class="gnn-link"/>
-
-      <!-- graph nodes -->
-      <circle cx="19.5" cy="11"   r="2.2" class="gnn-node pulse"/>
-      <circle cx="26.5" cy="14.5" r="2.0" class="gnn-node alt"/>
-      <circle cx="16"   cy="15.5" r="1.9" class="gnn-node alt"/>
-      <circle cx="23"   cy="22"   r="2.1" class="gnn-node"/>
-      <circle cx="28.5" cy="18.2" r="1.8" class="gnn-node alt"/>
+    <!-- Brain outline + small GNN overlay -->
+    <svg viewBox="0 0 48 48" role="img" aria-label="brain × graph">
+      <!-- brain outline（粗描边，简化形） -->
+      <path class="icon-brain"
+            d="M24 10c-5 0-9 3.8-9 8.2 0 .8.1 1.5.4 2.2
+               -2.0 1.0-3.4 2.8-3.4 5 0 3.0 2.4 5.2 5.4 5.6
+               -.2.6-.3 1.2-.3 1.8 0 3.2 2.8 5.6 6.6 5.6
+               3.8 0 6.8-2.3 6.8-5.2 0-.6-.1-1.1-.3-1.6
+               2.6-.8 4.5-3 4.5-5.7 0-4.0-3.6-6.9-7.9-7.2
+               C27 12 25.7 10 24 10z"/>
+      <!-- GNN edges -->
+      <line x1="24" y1="16" x2="33" y2="21" class="icon-link"/>
+      <line x1="20" y1="22" x2="29" y2="30" class="icon-link"/>
+      <line x1="29" y1="30" x2="37" y2="25" class="icon-link"/>
+      <!-- GNN nodes -->
+      <circle cx="24" cy="16" r="3"  class="icon-node"/>
+      <circle cx="33" cy="21" r="2.8" class="icon-node"/>
+      <circle cx="20" cy="22" r="2.8" class="icon-node"/>
+      <circle cx="29" cy="30" r="3"  class="icon-node"/>
+      <circle cx="37" cy="25" r="2.6" class="icon-node"/>
     </svg>
   </span>
   <strong>Interest:</strong>
