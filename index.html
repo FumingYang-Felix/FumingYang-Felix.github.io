@@ -147,73 +147,64 @@
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <div class="section-head">
-        <h2>Featured projects</h2>
-        <span class="muted">two tracks · one theme</span>
-      </div>
-      <div class="grid">
-        <!-- Card 1 -->
-        <article class="card">
-          <div class="rings" aria-hidden="true"></div>
-          <div class="kicker">CS · Algorithms</div>
-          <h3>Near‑linear <strong>seriation</strong> on sparse similarity graphs</h3>
-          <p>Three‑stage Condense → Densify → <em>SuperChain</em> with high‑probability recovery under a top‑(1+Δ) margin and bounded noise. Sub‑quadratic queries; parallelizable.</p>
-          <div style="margin-top:8px">
-            <span class="chip">O(N(log N + K))</span><span class="chip">theory</span><span class="chip">code</span>
-          </div>
-          <p style="margin-top:10px"><a href="#" target="_blank">preprint</a> · <a href="#" target="_blank">code</a> · <a href="#" target="_blank">project</a></p>
-        </article>
-        <!-- Card 2 -->
-        <article class="card">
-          <div class="rings" aria-hidden="true"></div>
-          <div class="kicker">Neuroscience · Systems</div>
-          <h3><strong>WaferTools</strong>: wafer‑to‑volume EM at scale</h3>
-          <p>Contract‑based modules from wafer imaging to volume assembly with measured throughput, latency, and failure recovery. Built for petavoxel‑scale datasets.</p>
-          <div style="margin-top:8px">
-            <span class="chip">bioRxiv</span><span class="chip">benchmarks</span><span class="chip">docs</span>
-          </div>
-          <p style="margin-top:10px"><a href="#" target="_blank">paper</a> · <a href="#" target="_blank">docs</a> · <a href="#" target="_blank">repo</a></p>
-        </article>
-        <!-- Card 3 -->
-        <article class="card">
-          <div class="rings" aria-hidden="true"></div>
-          <div class="kicker">Learning · Bio‑inspired</div>
-          <h3>Activity‑Budgeted Connectivity — <strong>SP‑in/out</strong></h3>
-          <p>A local rule that links activity to degree: shrink busy broadcasters, preserve reach for quiet detectors. Regrowth via magnitude Top‑k; variance‑preserving rescale; plug‑and‑play at FFN fan‑in/out and Conv2d.</p>
-          <div style="margin-top:8px">
-            <span class="chip">ICLR under review</span><span class="chip">FFN/Conv</span><span class="chip">Pareto</span>
-          </div>
-          <p style="margin-top:10px"><a href="#" target="_blank">preprint</a> · <a href="#" target="_blank">code</a> · <a href="#" target="_blank">slides</a></p>
-        </article>
-        <article class="card">
-          <div class="rings" aria-hidden="true"></div>
-          <div class="kicker">Consortium Project</div>
-          <h3>High‑throughput Integrative Mouse Connectomics (HI–MC)</h3>
-          <p>Eight‑group collaboration targeting a <strong>10&nbsp;mm³</strong> adult mouse cortex reconstruction at nanometer resolution. At Harvard, I lead data acquisition, QC, and analysis; the stack integrates a custom tissue mill with a <strong>91‑beam MultiSEM</strong> for unprecedented throughput.</p>
-          <div style="margin-top:8px">
-            <span class="chip">multi‑lab</span><span class="chip">EM</span><span class="chip">petavoxel</span>
-          </div>
-          <p style="margin-top:10px"><a href="#" target="_blank">overview</a></p>
-        </article>
-      </div>
-    </section>
 
-    <!-- Interests -->
-    <section id="interests">
-      <div class="section-head">
-        <h2>Research interests</h2>
-        <span class="muted">brain → math → algorithms → systems</span>
+<!-- Projects -->
+<section id="projects">
+  <div class="section-head">
+    <h2>Featured projects</h2>
+    <span class="muted">two tracks · one theme</span>
+  </div>
+  <div class="grid">
+    <!-- 1) HI–MC -->
+    <article class="card">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="kicker">Consortium Project</div>
+      <h3>High-throughput Integrative Mouse Connectomics (HI–MC)</h3>
+      <p>Eight-group collaboration targeting a <strong>10&nbsp;mm³</strong> adult mouse cortex reconstruction at nanometer resolution. At Harvard, I lead data acquisition, QC, and analysis; the stack integrates a custom tissue mill with a <strong>91-beam MultiSEM</strong> for unprecedented throughput.</p>
+      <div style="margin-top:8px">
+        <span class="chip">multi-lab</span><span class="chip">EM</span><span class="chip">petavoxel</span>
       </div>
-      <div class="card">
-        <ul>
-          <li><strong>Brain‑inspired priors for AI architectures</strong>: wiring economy, sparse communication, activity‑budgeted fan‑in/out; applications to routing/MoE, dynamic subnet selection, and efficient training.</li>
-          <li><strong>Structure discovery under sparse or missing observations</strong>: near‑linear seriation/time‑alignment, retrieval on sparse similarity graphs, and smoothed‑adversary models.</li>
-          <li><strong>Scalable connectomics tooling</strong>: wafer‑to‑volume pipelines, failure‑aware assembly, and metrics that translate to scientific and ML use (latency, active connections, tail recall).</li>
-        </ul>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">overview</a></p>
+    </article>
+
+    <!-- 2) Budgeted Broadcast -->
+    <article class="card">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="kicker">AI · Bio-inspired</div>
+      <h3>Budgeted Broadcast Connectivity — <strong>Model-Efficient Learning Strategy</strong></h3>
+      <p>A local rule that links activity to degree: shrink busy broadcasters, preserve reach for quiet detectors. Regrowth via magnitude Top-k; variance-preserving rescale; plug-and-play at FFN fan-in/out and Conv2d.</p>
+      <div style="margin-top:8px">
+        <span class="chip">ICLR under review</span><span class="chip">FFN/Conv</span><span class="chip">Pareto</span>
       </div>
-    </section>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">code</a> · <a href="#" target="_blank" rel="noopener">slides</a></p>
+    </article>
+
+    <!-- 3) Seriation -->
+    <article class="card">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="kicker">CS · Algorithms</div>
+      <h3>Near-linear <strong>seriation</strong> on sparse similarity graphs</h3>
+      <p>This work reframes EM seriation as a sparse, noisy graph problem; introduces the first near-linear algorithm with exact-recovery guarantees under bounded noise; and releases a 500-section benchmark with open-source code.</p>
+      <div style="margin-top:8px">
+        <span class="chip">O(N(log N + K))</span><span class="chip">theory</span><span class="chip">code</span>
+      </div>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">code</a> · <a href="#" target="_blank" rel="noopener">project</a></p>
+    </article>
+
+    <!-- 4) WaferTools -->
+    <article class="card">
+      <div class="rings" aria-hidden="true"></div>
+      <div class="kicker">Imaging · Software</div>
+      <h3><strong>WaferTools</strong>: wafer-to-volume EM at scale</h3>
+      <p>This work presents a comprehensive framework for automated geometric processing and structural ordering of MagC wafers. Built for petavoxel-scale datasets.</p>
+      <div style="margin-top:8px">
+        <span class="chip">bioRxiv</span><span class="chip">benchmarks</span><span class="chip">docs</span>
+      </div>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">paper</a> · <a href="#" target="_blank" rel="noopener">docs</a> · <a href="#" target="_blank" rel="noopener">repo</a></p>
+    </article>
+  </div>
+</section>
+
 
     <!-- Publications -->
     <section id="publications">
@@ -245,13 +236,13 @@
           <h3 style="margin-top:0">CS / ML & Theory</h3>
           <div class="pub">
             <strong>Near‑linear seriation on sparse similarity graphs</strong><br/>
-            <em>Fuming (Felix) Yang</em>, coauthors · under review (CVPR–CVMI).
+            <em>Fuming (Felix) Yang</em>, coauthors · submitting to (CVPR–CVMI).
             <div class="badges"><span class="badge under">under review</span><span class="badge">graphs</span><span class="badge">theory</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="#">code</a> · <a href="#">project</a></div>
           </div>
           <div class="pub">
             <strong>Activity‑Budgeted Connectivity (SP‑in/out)</strong><br/>
-            <em>Fuming (Felix) Yang</em>, coauthors · under review (ICLR).
+            <em>Fuming (Felix) Yang</em>, coauthors · submitting to (ICLR).
             <div class="badges"><span class="badge under">under review</span><span class="badge">learning</span><span class="badge">sparsity</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="#">code</a> · <a href="#">slides</a></div>
           </div>
@@ -271,7 +262,7 @@
           <button class="btn" data-filter="cs">CV / ML</button>
           <button class="btn" data-filter="software">Software</button>
           <button class="btn" data-filter="neuro">Neuroscience</button>          
-          <button class="btn" data-filter="other">Other</button>
+          <button class="btn" data-filter="other">Psychiatry</button>
           <a class="btn" href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar →</a>
         </div>
         <div id="publist"></div>
@@ -329,15 +320,15 @@
     {
       title: 'Near-linear seriation on sparse similarity graphs',
       authors: 'Fuming (Felix) Yang et al.',
-      venue: 'submitting (CVPR–CVMI)',
+      venue: 'submitting to (CVPR–CVMI)',
       year: 2025,
       track: 'cs',
       links: { pdf: '#', code: '#', project: '#' }
     },
     {
-      title: 'Budgeted Broadcast (SP-in/out): activity–fan-out sparsity for efficient learning',
+      title: 'Budgeted Broadcast (BB): Reallocation Strategy for Model Efficient Learning',
       authors: 'Fuming (Felix) Yang et al.',
-      venue: 'under review (ICLR)',
+      venue: 'Submitting to (ICLR)',
       year: 2025,
       track: 'cs',
       links: { pdf: '#', code: '#', slides: '#' }
