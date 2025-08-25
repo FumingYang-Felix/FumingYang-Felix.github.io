@@ -137,9 +137,9 @@
     <section class="hero">
       <span class="tagline">Research Fellow at Harvard University</span>
       <h1 class="title"> I'm aiming to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain & math.</h1>
-      <p class="sub">I split my time between <strong>graph algorithms</strong> (near‑linear seriation on sparse similarity graphs),
-        <strong>large‑scale imaging systems</strong> (WaferTools for wafer‑to‑volume EM), and <strong>bio‑inspired learning rules</strong>
-        (activity‑budgeted connectivity, SP‑in/out). I like turning clean models into reliable tools.</p>
+      <p class="sub">I split my time between <strong>graph algorithms</strong> (e.g., near‑linear seriation on sparse similarity graphs),
+        <strong>large‑scale imaging systems</strong> (HI-MC project, designing WaferTools for wafer‑to‑volume EM), and <strong>solving computer science delimma inspaired by biology & math</strong>
+        (e.g.,Budgeted Broadcast (BB) local rule).</p>
       <div class="hero-cta">
         <a class="btn primary" href="#projects">See projects</a>
         <a class="btn" href="#publications">Latest papers</a>
@@ -268,118 +268,127 @@
       <div class="card">
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
           <button class="btn" data-filter="all">All</button>
-          <button class="btn" data-filter="neuro">Neuroscience</button>
-          <button class="btn" data-filter="cs">CS / ML</button>
+          <button class="btn" data-filter="cs">CV / ML</button>
+          <button class="btn" data-filter="software">Software</button>
+          <button class="btn" data-filter="neuro">Neuroscience</button>          
           <button class="btn" data-filter="other">Other</button>
           <a class="btn" href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar →</a>
         </div>
         <div id="publist"></div>
       </div>
 
-      <script>
-        // === Publication data (extend this list as needed) ===
-        const publications = [
-          // --- Neuroscience & Systems ---
-          {
-            title: 'Cellular and synaptic organization of the Octopus vertical lobe',
-            authors: 'F. Bidel, Y. Meirovitch, F. Yang, J.W. Lichtman, B. Hochner',
-            venue: 'eLife',
-            year: 2025,
-            track: 'neuro',
-            links: { other: 'https://elifesciences.org/reviewed-preprints/105973v1' }
-          },
-          {
-            title: 'Connectomic evidence that ordered activity drives neuromuscular network formation',
-            authors: 'Meirovitch Y, Kang K, Draft RW, Pavarino EC, Henao Echeverri MF, Yang F, Turney SG, Berger DR, Peleg A, Montero‑Crespo M, Schalek RL, Lu J, Livet J, Tapia J‑C, Lichtman JW',
-            venue: 'under review at Nature Neuroscience (bioRxiv: Neuromuscular connectomes across development reveal synaptic ordering rules)',
-            year: 2025,
-            track: 'neuro',
-            links: { pdf: 'https://www.biorxiv.org/content/10.1101/2021.09.20.460480', other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
-          },
-          {
-            title: 'Connectomics of the Octopus vulgaris vertical lobe provides insight into conserved and novel principles of a memory acquisition network',
-            authors: 'F. Bidel, Y. Meirovitch, R.L. Schalek, X. Lu, E.C. Pavarino, F. Yang, A. Peleg, ...',
-            venue: 'eLife 12: e84257',
-            year: 2023,
-            track: 'neuro',
-            links: { other: 'https://elifesciences.org/articles/84257' }
-          },
+<script>
+  // === Publication data ===
+  const publications = [
+    // --- Neuroscience & Systems ---
+    {
+      title: 'Cellular and synaptic organization of the Octopus vertical lobe',
+      authors: 'F. Bidel, Y. Meirovitch, F. Yang, J.W. Lichtman, B. Hochner',
+      venue: 'eLife',
+      year: 2025,
+      track: 'neuro',
+      links: { other: 'https://elifesciences.org/reviewed-preprints/105973v1' }
+    },
+    {
+      title: 'Neuromuscular connectomes across development reveal synaptic ordering rules',
+      authors: 'Meirovitch Y, Kang K, Draft RW, Pavarino EC, Henao Echeverri MF, Yang F, Turney SG, Berger DR, Peleg A, Montero-Crespo M, Schalek RL, Lu J, Livet J, Tapia J-C, Lichtman JW',
+      venue: 'bioRxiv 2021.09.20.460480 (under review at Nature Neuroscience)',
+      year: 2025, 
+      track: 'neuro',
+      links: {
+        pdf: 'https://www.biorxiv.org/content/10.1101/2021.09.20.460480',
+        other: 'https://doi.org/10.1101/2021.09.20.460480'
+      }
+    },
+    {
+      title: 'Connectomics of the Octopus vulgaris vertical lobe provides insight into conserved and novel principles of a memory acquisition network',
+      authors: 'F. Bidel, Y. Meirovitch, R.L. Schalek, X. Lu, E.C. Pavarino, F. Yang, A. Peleg, ...',
+      venue: 'eLife 12: e84257',
+      year: 2023,
+      track: 'neuro',
+      links: { other: 'https://elifesciences.org/articles/84257' }
+    },
+    {
+      title: 'mEMbrain: an interactive deep learning MATLAB tool for connectomic segmentation on commodity desktops',
+      authors: 'E.C. Pavarino, E. Yang, N. Dhanyasi, M.D. Wang, F. Bidel, X. Lu, F. Yang, ...',
+      venue: 'Frontiers in Neural Circuits 17: 952921',
+      year: 2023,
+      track: 'software',
+      links: { other: 'https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2023.952921/full' }
+    },
+    {
+      title: 'WaferTools: wafer-to-volume electron microscopy pipeline',
+      authors: 'Fuming (Felix) Yang et al.',
+      venue: 'bioRxiv preprint',
+      year: 2025,
+      track: 'software',
+      links: { pdf: '#', code: '#', project: '#' }
+    },
 
-          {
-            title: 'mEMbrain: an interactive deep learning MATLAB tool for connectomic segmentation on commodity desktops',
-            authors: 'E.C. Pavarino, E. Yang, N. Dhanyasi, M.D. Wang, F. Bidel, X. Lu, F. Yang, ...',
-            venue: 'Frontiers in Neural Circuits 17: 952921',
-            year: 2023,
-            track: 'software',
-            links: { other: 'https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2023.952921/full' }
-          },
-          {
-            title: 'WaferTools: wafer‑to‑volume electron microscopy pipeline',
-            authors: 'Fuming (Felix) Yang et al.',
-            venue: 'bioRxiv preprint',
-            year: 2025,
-            track: 'software',
-            links: { pdf: '#', code: '#', project: '#' }
-          },
+    // --- CS / ML & Theory ---
+    {
+      title: 'Near-linear seriation on sparse similarity graphs',
+      authors: 'Fuming (Felix) Yang et al.',
+      venue: 'submitting (CVPR–CVMI)',
+      year: 2025,
+      track: 'cs',
+      links: { pdf: '#', code: '#', project: '#' }
+    },
+    {
+      title: 'Budgeted Broadcast (SP-in/out): activity–fan-out sparsity for efficient learning',
+      authors: 'Fuming (Felix) Yang et al.',
+      venue: 'under review (ICLR)',
+      year: 2025,
+      track: 'cs',
+      links: { pdf: '#', code: '#', slides: '#' }
+    },
 
-          // --- CS / ML & Theory ---
-          {
-            title: 'Near‑linear seriation on sparse similarity graphs',
-            authors: 'Fuming (Felix) Yang et al.',
-            venue: 'submitting (CVPR–CVMI)',
-            year: 2025,
-            track: 'cs',
-            links: { pdf: '#', code: '#', project: '#' }
-          },
-          {
-            title: 'Feed Your neuron wisely: Budgeted broadcast Reallocates strategy inspired by biological rules',
-            authors: 'Fuming (Felix) Yang et al.',
-            venue: 'under review (ICLR)',
-            year: 2025,
-            track: 'cs',
-            links: { pdf: '#', code: '#', slides: '#' }
-          },
+    // --- Other ---
+    {
+      title: 'The Narrative Coherence of Autistic Children’s Accounts of an Experienced Event in Response to Different Interviewer Prompts: A Longitudinal Study',
+      authors: 'T.S. Almeida, F. Yang, H. Zhang, M.E. Lamb',
+      venue: 'Journal of Autism and Developmental Disorders',
+      year: 2024,
+      track: 'other',
+      links: { other: 'https://link.springer.com/article/10.1007/s10803-024-06675-x' }
+    }
+  ];
 
-          // --- Other ---
-          {
-            title: 'The Narrative Coherence of Autistic Children’s Accounts of an Experienced Event in Response to Different Interviewer Prompts: A Longitudinal Study',
-            authors: 'T.S. Almeida, F. Yang, H. Zhang, M.E. Lamb',
-            venue: 'Journal of Autism and Developmental Disorders',
-            year: 2024,
-            track: 'other',
-            links: {other: 'https://link.springer.com/article/10.1007/s10803-024-06675-x' }
-          }
-        ];
+  const publist = document.getElementById('publist');
+  const trackLabel = { cs: 'CV/AI', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
 
-        const publist = document.getElementById('publist');
-        const trackLabel = { cs: 'CV/AI', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
-        const render = (flt='all') => {
-          const items = publications
-            .filter(p => flt==='all' ? true : p.track===flt)
-            .sort((a,b)=> b.year - a.year || a.title.localeCompare(b.title));
-          publist.innerHTML = items.map(p => `
-            <div class="pub">
-              <strong>${p.title}</strong> <span class="muted">(${p.year})</span><br/>
-              ${p.authors} · ${p.venue}
-              <div class="badges">
-                <span class="badge">${trackLabel[p.track]||p.track}</span>
-              </div>
-              <div style="margin-top:6px">
-                ${p.links?.pdf?`<a href="${p.links.pdf}" target="_blank">PDF</a>`:''}
-                ${p.links?.code?` · <a href="${p.links.code}" target="_blank">code</a>`:''}
-                ${p.links?.project?` · <a href="${p.links.project}" target="_blank">project</a>`:''}
-                ${p.links?.slides?` · <a href="${p.links.slides}" target="_blank">slides</a>`:''}
-                ${p.links?.other?` · <a href="${p.links.other}" target="_blank">link</a>`:''}
-              </div>
-            </div>
-          `).join('');
-        };
-        render();
-        document.querySelectorAll('#allpubs [data-filter]').forEach(btn => {
-          btn.addEventListener('click', ()=> render(btn.dataset.filter));
-        });
-      </script>
-    </section>
+  function render(flt = 'all') {
+    const key = String(flt || 'all').toLowerCase().trim();            // 忽略大小写/空格
+    const items = publications
+      .filter(p => key === 'all' ? true : String(p.track || '').toLowerCase().trim() === key)
+      .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
+
+    publist.innerHTML = items.length
+      ? items.map(p => `
+        <div class="pub">
+          <strong>${p.title}</strong> <span class="muted">(${p.year})</span><br/>
+          ${p.authors} · ${p.venue}
+          <div class="badges">
+            <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track}</span>
+          </div>
+          <div style="margin-top:6px">
+            ${p.links && p.links.pdf ? `<a href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
+            ${p.links && p.links.code ? ` · <a href="${p.links.code}" target="_blank" rel="noopener">code</a>` : ''}
+            ${p.links && p.links.project ? ` · <a href="${p.links.project}" target="_blank" rel="noopener">project</a>` : ''}
+            ${p.links && p.links.slides ? ` · <a href="${p.links.slides}" target="_blank" rel="noopener">slides</a>` : ''}
+            ${p.links && p.links.other ? ` · <a href="${p.links.other}" target="_blank" rel="noopener">link</a>` : ''}
+          </div>
+        </div>
+      `).join('')
+      : `<div class="muted">No entries under <b>${trackLabel[key] || key}</b> yet.</div>`;
+  }
+
+  render();
+  document.querySelectorAll('#allpubs [data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => render(btn.dataset.filter));
+  });
+</script>
+</section>
 
     <!-- About -->
     <section id="about">
