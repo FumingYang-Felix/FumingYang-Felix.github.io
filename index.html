@@ -50,6 +50,25 @@
     a { color: rgb(var(--accent1)); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { width: min(1100px, 92vw); margin-inline: auto; }
+    /* --- Gym card: subtle gradient border + dumbbell icon --- */
+.card.gym{
+  position:relative; border:1px solid transparent; border-radius: var(--radius);
+  background: rgb(var(--card)/.7);
+}
+.card.gym::before{
+  content:""; position:absolute; inset:0; padding:1px; border-radius:inherit;
+  background: linear-gradient(135deg, rgb(var(--accent1)/.85), rgb(var(--accent2)/.85));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;  /* 只显示边框那一圈 */
+  pointer-events:none; opacity:.9;
+}
+.about-line{
+  display:flex; align-items:center; gap:10px; margin:0; font-weight:600;
+}
+.dumbbell{ width:22px; height:22px; color: rgb(var(--accent1)); transition:transform .18s ease; }
+.card.gym:hover .dumbbell{ transform: rotate(-10deg) translateY(-1px); }
+
 
     /* ---------------- Header ---------------- */
     header {
@@ -557,17 +576,28 @@
 </script>
 </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="section-head">
-        <h2>About</h2>
-        <span class="muted">short bio</span>
-      </div>
-      <div class="card">
-        <p>Hi! I’m <strong>Fuming (Felix) Yang</strong>. I work at the interface of algorithms, neuroscience, and systems. Right now I help build a petavoxel‑scale connectomics pipeline and design brain‑inspired learning rules that translate into efficient ML.</p>
-        <p><strong>Current role.</strong> I lead data‑acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high‑throughput quality‑control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91‑beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record‑speed imaging of large neural volumes.</p>
-      </div>
-    </section>
+<section id="about">
+  <div class="section-head">
+    <h2>Life Style</h2>
+    <span class="muted">short bio</span>
+  </div>
+
+  <div class="card gym" aria-label="Lifestyle motto">
+    <p class="about-line">
+      <!-- tiny dumbbell icon -->
+      <svg class="dumbbell" viewBox="0 0 24 24" role="img" aria-label="dumbbell icon">
+        <rect x="3"  y="9"  width="2" height="6" rx="1" fill="currentColor"></rect>
+        <rect x="5"  y="8"  width="2" height="8" rx="1" fill="currentColor"></rect>
+        <rect x="7"  y="10" width="10" height="4" rx="1.5" fill="currentColor"></rect>
+        <rect x="17" y="8"  width="2" height="8" rx="1" fill="currentColor"></rect>
+        <rect x="19" y="9"  width="2" height="6" rx="1" fill="currentColor"></rect>
+      </svg>
+      Gym before Git—so the merges are swole and the bugs feel light.
+      <!-- 可选再加一个 emoji：<span aria-hidden="true" style="margin-left:6px">💪</span> -->
+    </p>
+  </div>
+</section>
+
 
     <!-- Contact -->
     <section id="contact">
