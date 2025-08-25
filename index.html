@@ -166,6 +166,26 @@
 @keyframes orbit{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-52}}
 /* 可选：让“Interest:”更突出 */
 .interest-line strong{letter-spacing:.2px}
+/* --- Interest mini-badge: Brain × GNN --- */
+.interest-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0}
+.interest-badge{
+  display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg, rgb(var(--accent1)/.10), rgb(var(--accent2)/.10));
+  border:1px solid rgb(var(--ring)/.40); box-shadow:var(--shadow)
+}
+.interest-badge svg{width:24px;height:24px}
+
+/* strokes & nodes */
+.gnn-brain{fill:url(#gnn-grad); stroke: rgb(var(--accent2)); stroke-width:1.4}
+.gnn-link{stroke: rgb(var(--accent1)); stroke-width:1.6; stroke-linecap:round; opacity:.9; fill:none}
+.gnn-node{fill: rgb(var(--accent1))}
+.gnn-node.alt{fill: rgb(var(--accent2))}
+
+/* subtle motion */
+@keyframes ping{0%{transform:scale(.9);opacity:.7}50%{transform:scale(1.12);opacity:1}100%{transform:scale(.9);opacity:.7}}
+.pulse{animation:ping 1.8s ease-in-out infinite; transform-origin:center}
+@media (prefers-reduced-motion: reduce){ .pulse{animation:none} }
+
 
   </style>
 </head>
@@ -195,18 +215,47 @@
     <section class="hero">
       <span class="tagline">Research Fellow in Lichtman Lab at Harvard University</span>
       <h1 class="title"> Hey! I'm Fuming Yang ;) </br> </h1>
-      <p class="interest-line">
+<p class="interest-line">
   <span class="interest-badge" aria-hidden="true">
-    <!-- tiny brain×math vibe: an orbiting ring + pulsing node -->
-    <svg viewBox="0 0 24 24" role="img" aria-label="research interests">
-      <circle cx="12" cy="12" r="8" class="orbit"></circle>
-      <circle cx="8" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
-      <circle cx="8" cy="10" r="3" class="pulse"></circle>
+    <!-- Brain × Graph (GNN) mini icon -->
+    <svg viewBox="0 0 36 36" role="img" aria-label="research interests: brain × graph">
+      <defs>
+        <linearGradient id="gnn-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" style="stop-color: rgb(var(--accent1));" />
+          <stop offset="1" style="stop-color: rgb(var(--accent2));" />
+        </linearGradient>
+      </defs>
+
+      <!-- simplified brain blob -->
+      <path class="gnn-brain"
+            d="M18 6c-3.2 0-5.8 2.3-5.8 5 0 .6.1 1.1.3 1.6
+               -1.6.9-2.7 2.3-2.7 4 0 2.2 1.6 3.8 3.6 4.2
+               -.2.5-.3 1-.3 1.6 0 2.3 2 4.2 4.9 4.2
+               2.9 0 5.2-2 5.2-4.6 0-.5-.1-1-.2-1.4
+               1.8-.6 3-2.1 3-3.9 0-2.8-2.3-4.9-5.2-5
+               -.7-2.3-3-3.7-5-3.7z"
+            opacity=".95"/>
+
+      <!-- inner sulcus hint -->
+      <path d="M15 12c1.4 1 2.3 2.2 2.9 3.9" stroke="currentColor" stroke-width="1" opacity=".55" fill="none"/>
+
+      <!-- graph edges -->
+      <line x1="19.5" y1="11" x2="26.5" y2="14.5" class="gnn-link"/>
+      <line x1="16"   y1="15.5" x2="23"   y2="22"   class="gnn-link"/>
+      <line x1="23"   y1="22"   x2="28.5" y2="18.2" class="gnn-link"/>
+
+      <!-- graph nodes -->
+      <circle cx="19.5" cy="11"   r="2.2" class="gnn-node pulse"/>
+      <circle cx="26.5" cy="14.5" r="2.0" class="gnn-node alt"/>
+      <circle cx="16"   cy="15.5" r="1.9" class="gnn-node alt"/>
+      <circle cx="23"   cy="22"   r="2.1" class="gnn-node"/>
+      <circle cx="28.5" cy="18.2" r="1.8" class="gnn-node alt"/>
     </svg>
   </span>
   <strong>Interest:</strong>
   <span>to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain &amp; math.</span>
 </p>
+
 
       <p><strong>Current role.</strong> I lead data-acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91-beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.</p>
       <div class="hero-cta">
