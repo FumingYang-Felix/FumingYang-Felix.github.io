@@ -15,22 +15,22 @@
   <style>
     /* ---------------- Base + Theme ---------------- */
     :root {
-      --bg: 255 255 255;          /* light background */
-      --fg: 17 24 39;             /* almost-black text */
+      --bg: 255 255 255;
+      --fg: 17 24 39;
       --muted: 107 114 128;
       --card: 249 250 251;
-      --ring: 14 165 233;         /* accent (sky-500) */
-      --accent1: 14 165 233;      /* primary */
-      --accent2: 99 102 241;      /* secondary */
+      --ring: 14 165 233;
+      --accent1: 14 165 233;
+      --accent2: 99 102 241;
       --radius: 16px;
       --shadow: 0 10px 30px rgba(2, 6, 23, .12);
     }
     .dark {
-      --bg: 3 7 18;               /* slate-950 */
-      --fg: 226 232 240;          /* slate-200 */
+      --bg: 3 7 18;
+      --fg: 226 232 240;
       --muted: 148 163 184;
       --card: 8 14 33;
-      --ring: 125 211 252;        /* sky-300 */
+      --ring: 125 211 252;
       --accent1: 56 189 248;
       --accent2: 168 85 247;
       --shadow: 0 10px 30px rgba(2, 6, 23, .5);
@@ -84,16 +84,19 @@
       font-size: clamp(28px, 6vw, 48px);
       line-height: 1.12; font-weight: 800; letter-spacing: -0.02em;
       margin: 8px 0 12px;
-      /* 控制行宽让长句更好读；小屏自动放开 */
       max-width: min(26ch, 100%);
       hyphens: auto; overflow-wrap: anywhere;
     }
+    /* 副文案淡灰风格 */
     .hero .sub { color: rgb(var(--muted)); max-width: 70ch; }
     .tagline {
       display:inline-block; padding: 6px 10px; border-radius: 999px; font-size: 13px;
       background: rgb(var(--ring)/.12); color: rgb(var(--accent1)); border: 1px solid rgb(var(--ring)/.35);
     }
     .hero-cta { display:flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    /* 大屏才强制换行 */
+    .br-lg{ display:none; }
+    @media (min-width: 768px){ .br-lg{ display:inline; } }
 
     /* ---------------- Sections ---------------- */
     section { padding: 40px 0; }
@@ -112,15 +115,6 @@
     .card .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: .18em; color: rgb(var(--muted)); }
     .card h3 { margin: 6px 0 6px; font-size: 18px; }
     .chip { display:inline-block; border: 1px solid rgb(var(--fg)/.12); padding: 2px 8px; border-radius: 999px; font-size: 12px; margin-right: 6px; color: rgb(var(--muted)); }
-
-    /* ---------------- Timeline / News ---------------- */
-    .timeline { display:grid; gap: 12px; }
-    .item { display:flex; gap: 12px; align-items:flex-start; }
-    .dot2 {
-      width:10px; height:10px; border-radius:999px;
-      background: linear-gradient(135deg, rgb(var(--accent1)/.9), rgb(var(--accent2)/.9));
-      box-shadow: 0 0 0 3px rgb(var(--ring)/.18); margin-top: 7px;
-    }
 
     /* ---------------- Publications ---------------- */
     .pub { padding: 14px 0; border-bottom: 1px dashed rgb(var(--fg)/.1); }
@@ -164,7 +158,7 @@
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
           <button id="themeBtn" class="btn" aria-label="Toggle theme">🌗 Theme</button>
-          <!-- Removed Download CV per your request -->
+          <!-- Download CV removed -->
         </div>
       </nav>
     </div>
@@ -174,8 +168,11 @@
     <!-- Hero -->
     <section class="hero">
       <span class="tagline">Research Fellow at Harvard University</span>
-      <h1 class="title"> Hi! I'm Fuming Yang, aiming to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain & math.</h1>
-      <p><strong>Current role.</strong> I lead data-acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91-beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.</p>
+      <h1 class="title">
+        Hi! I'm Fuming Yang ;) <br class="br-lg">
+        aiming to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain &amp; math.
+      </h1>
+      <p class="sub"><strong>Current role.</strong> I lead data-acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91-beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#projects">See projects</a>
         <a class="btn" href="#publications">Latest papers</a>
@@ -353,7 +350,7 @@
 
     // --- CS / ML & Theory ---
     {
-      title: 'Near-linear seriation on sparse similarity graphs',
+      title: 'Near-linear Graph Condensation-Densification and SuperChain for Quasi-monotonic Morphological Sequence Recovery',
       authors: 'Fuming Yang et al.',
       venue: 'submitting to (CVPR–CVMI)',
       year: 2025,
