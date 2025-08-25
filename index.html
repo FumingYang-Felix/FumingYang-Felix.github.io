@@ -135,7 +135,7 @@
   <main class="container">
     <!-- Hero -->
     <section class="hero">
-      <span class="tagline">PhD applicant · Brain‑inspired AI</span>
+      <span class="tagline">Research Fellow· Brain‑inspired AI</span>
       <h1 class="title">Shaping <span class="underline-gradient">brain‑inspired AI</span> from biology & mathematics;
         building systems and theory for <em>efficient structure discovery</em> under sparsity.</h1>
       <p class="sub">I split my time between <strong>graph algorithms</strong> (near‑linear seriation on sparse similarity graphs),
@@ -284,14 +284,14 @@
           {
             title: 'Cellular and synaptic organization of the Octopus vertical lobe',
             authors: 'F. Bidel, Y. Meirovitch, F. Yang, J.W. Lichtman, B. Hochner',
-            venue: 'bioRxiv preprint',
+            venue: 'eLife',
             year: 2025,
             track: 'neuro',
-            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+            links: { other: 'https://elifesciences.org/reviewed-preprints/105973v1' }
           },
           {
             title: 'Connectomic evidence that ordered activity drives neuromuscular network formation',
-            authors: 'Fuming (Felix) Yang et al.',
+            authors: 'Meirovitch Y, Kang K, Draft RW, Pavarino EC, Henao Echeverri MF, Yang F, Turney SG, Berger DR, Peleg A, Montero‑Crespo M, Schalek RL, Lu J, Livet J, Tapia J‑C, Lichtman JW',
             venue: 'under review at Nature Neuroscience (bioRxiv: Neuromuscular connectomes across development reveal synaptic ordering rules)',
             year: 2025,
             track: 'neuro',
@@ -303,22 +303,23 @@
             venue: 'eLife 12: e84257',
             year: 2023,
             track: 'neuro',
-            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+            links: { other: 'https://elifesciences.org/articles/84257' }
           },
+
           {
             title: 'mEMbrain: an interactive deep learning MATLAB tool for connectomic segmentation on commodity desktops',
             authors: 'E.C. Pavarino, E. Yang, N. Dhanyasi, M.D. Wang, F. Bidel, X. Lu, F. Yang, ...',
             venue: 'Frontiers in Neural Circuits 17: 952921',
             year: 2023,
-            track: 'neuro',
-            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+            track: 'Software',
+            links: { other: 'https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2023.952921/full' }
           },
           {
             title: 'WaferTools: wafer‑to‑volume electron microscopy pipeline',
             authors: 'Fuming (Felix) Yang et al.',
             venue: 'bioRxiv preprint',
-            year: 2024,
-            track: 'neuro',
+            year: 2025,
+            track: 'Software',
             links: { pdf: '#', code: '#', project: '#' }
           },
 
@@ -326,17 +327,17 @@
           {
             title: 'Near‑linear seriation on sparse similarity graphs',
             authors: 'Fuming (Felix) Yang et al.',
-            venue: 'under review (CVPR–CVMI)',
+            venue: 'submitting (CVPR–CVMI)',
             year: 2025,
-            track: 'cs',
+            track: 'CV/AI',
             links: { pdf: '#', code: '#', project: '#' }
           },
           {
-            title: 'Activity‑Budgeted Connectivity (SP‑in/out)',
+            title: 'Feed Your neuron wisely: Budgeted broadcast Reallocates strategy inspired by biological rules',
             authors: 'Fuming (Felix) Yang et al.',
             venue: 'under review (ICLR)',
             year: 2025,
-            track: 'cs',
+            track: 'CV/AI',
             links: { pdf: '#', code: '#', slides: '#' }
           },
 
@@ -347,12 +348,12 @@
             venue: 'Journal of Autism and Developmental Disorders',
             year: 2024,
             track: 'other',
-            links: { other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+            links: {other: 'https://link.springer.com/article/10.1007/s10803-024-06675-x' }
           }
         ];
 
         const publist = document.getElementById('publist');
-        const trackLabel = { neuro: 'neuroscience', cs: 'cs/ml', other: 'other' };
+        const trackLabel = { cs: 'CV/AI', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
         const render = (flt='all') => {
           const items = publications
             .filter(p => flt==='all' ? true : p.track===flt)
