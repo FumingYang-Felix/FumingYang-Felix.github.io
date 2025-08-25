@@ -219,18 +219,17 @@
     <!-- Publications -->
     <section id="publications">
       <div class="section-head">
-        <h2>Publications</h2>
-        <span class="muted">split by track</span>
+        <h2>Publications (selected)</h2>
+        <span class="muted">split by track — <a href="#allpubs">see full list</a></span>
       </div>
 
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
         <!-- Neuroscience & Systems -->
         <div class="card">
-          $1
+          <h3 style="margin-top:0">Neuroscience & Systems</h3>
           <div class="pub">
             <strong>Connectomic evidence that ordered activity drives neuromuscular network formation</strong><br/>
-            <em>Fuming (Felix) Yang</em>, coauthors · under review at <em>Nature Neuroscience</em>.<br/>
-            <span class="muted">bioRxiv title: <em>Neuromuscular connectomes across development reveal synaptic ordering rules</em></span>
+            <em>Fuming (Felix) Yang</em>, coauthors · under review at <em>Nature Neuroscience</em>.
             <div class="badges"><span class="badge under">under review</span><span class="badge">development</span><span class="badge">connectomics</span></div>
             <div style="margin-top:6px"><a href="#" target="_blank">bioRxiv</a> · <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">scholar</a></div>
           </div>
@@ -239,9 +238,6 @@
             <em>Fuming (Felix) Yang</em>, coauthors · bioRxiv preprint.
             <div class="badges"><span class="badge preprint">preprint</span><span class="badge">systems</span><span class="badge">connectomics</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="#">repo</a> · <a href="#">docs</a></div>
-          </div>
-          <div class="pub">
-            <em>Selected co‑authored papers</em> (middle author) — list upon request.
           </div>
         </div>
 
@@ -262,6 +258,88 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- All Publications (auto-render) -->
+    <section id="allpubs">
+      <div class="section-head">
+        <h2>Publications — full list</h2>
+        <span class="muted">filterable by track</span>
+      </div>
+      <div class="card">
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+          <button class="btn" data-filter="all">All</button>
+          <button class="btn" data-filter="neuro">Neuroscience</button>
+          <button class="btn" data-filter="cs">CS / ML</button>
+          <a class="btn" href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar →</a>
+        </div>
+        <div id="publist"></div>
+      </div>
+
+      <script>
+        // === Publication data (extend this list as needed) ===
+        const publications = [
+          {
+            title: 'Connectomic evidence that ordered activity drives neuromuscular network formation',
+            authors: 'Fuming (Felix) Yang et al.',
+            venue: 'under review at Nature Neuroscience',
+            year: 2025,
+            track: 'neuro',
+            links: { pdf: '#', other: 'https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en' }
+          },
+          {
+            title: 'WaferTools: wafer‑to‑volume electron microscopy pipeline',
+            authors: 'Fuming (Felix) Yang et al.',
+            venue: 'bioRxiv preprint',
+            year: 2024,
+            track: 'neuro',
+            links: { pdf: '#', code: '#', project: '#' }
+          },
+          {
+            title: 'Near‑linear seriation on sparse similarity graphs',
+            authors: 'Fuming (Felix) Yang et al.',
+            venue: 'under review (CVPR–CVMI)',
+            year: 2025,
+            track: 'cs',
+            links: { pdf: '#', code: '#', project: '#' }
+          },
+          {
+            title: 'Activity‑Budgeted Connectivity (SP‑in/out)',
+            authors: 'Fuming (Felix) Yang et al.',
+            venue: 'under review (ICLR)',
+            year: 2025,
+            track: 'cs',
+            links: { pdf: '#', code: '#', slides: '#' }
+          }
+        ];
+
+        const publist = document.getElementById('publist');
+        const render = (flt='all') => {
+          const items = publications
+            .filter(p => flt==='all' ? true : p.track===flt)
+            .sort((a,b)=> b.year - a.year || a.title.localeCompare(b.title));
+          publist.innerHTML = items.map(p => `
+            <div class="pub">
+              <strong>${p.title}</strong> <span class="muted">(${p.year})</span><br/>
+              ${p.authors} · ${p.venue}
+              <div class="badges">
+                <span class="badge">${p.track==='neuro'?'neuroscience':'cs/ml'}</span>
+              </div>
+              <div style="margin-top:6px">
+                ${p.links?.pdf?`<a href="${p.links.pdf}" target="_blank">PDF</a>`:''}
+                ${p.links?.code?` · <a href="${p.links.code}" target="_blank">code</a>`:''}
+                ${p.links?.project?` · <a href="${p.links.project}" target="_blank">project</a>`:''}
+                ${p.links?.slides?` · <a href="${p.links.slides}" target="_blank">slides</a>`:''}
+                ${p.links?.other?` · <a href="${p.links.other}" target="_blank">link</a>`:''}
+              </div>
+            </div>
+          `).join('');
+        };
+        render();
+        document.querySelectorAll('#allpubs [data-filter]').forEach(btn => {
+          btn.addEventListener('click', ()=> render(btn.dataset.filter));
+        });
+      </script>
     </section>
 
     <!-- About -->
