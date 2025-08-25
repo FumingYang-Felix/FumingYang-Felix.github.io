@@ -147,6 +147,26 @@
       .hero { padding-top: 36px; }
       .hero .title { max-width: 100%; }
     }
+    /* --- Interest mini-badge --- */
+.interest-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0}
+.interest-badge{
+  display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg, rgb(var(--accent1)/.10), rgb(var(--accent2)/.10));
+  border:1px solid rgb(var(--ring)/.40); box-shadow:var(--shadow)
+}
+.interest-badge svg{width:24px;height:24px}
+.interest-badge .orbit{
+  stroke: rgb(var(--accent2)); stroke-width:2; fill:none; stroke-linecap:round;
+  stroke-dasharray:16 10; animation:orbit 2.4s linear infinite
+}
+.interest-badge .pulse{
+  fill: rgb(var(--accent1)); animation:pulse 1.8s ease-in-out infinite
+}
+@keyframes pulse{0%{r:3;opacity:.6}50%{r:5;opacity:1}100%{r:3;opacity:.6}}
+@keyframes orbit{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-52}}
+/* 可选：让“Interest:”更突出 */
+.interest-line strong{letter-spacing:.2px}
+
   </style>
 </head>
 <body>
@@ -175,7 +195,19 @@
     <section class="hero">
       <span class="tagline">Research Fellow at Harvard University</span>
       <h1 class="title"> Hey! I'm Fuming Yang ;) </br> </h1>
-       <p> <strong>Interest: to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain & math.</strong></p>
+      <p class="interest-line">
+  <span class="interest-badge" aria-hidden="true">
+    <!-- tiny brain×math vibe: an orbiting ring + pulsing node -->
+    <svg viewBox="0 0 24 24" role="img" aria-label="research interests">
+      <circle cx="12" cy="12" r="8" class="orbit"></circle>
+      <circle cx="8" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+      <circle cx="8" cy="10" r="3" class="pulse"></circle>
+    </svg>
+  </span>
+  <strong>Interest:</strong>
+  <span>to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to, the challenges of human brain &amp; math.</span>
+</p>
+
       <p><strong>Current role.</strong> I lead data-acquisition efforts at an electron microscopy facility at Harvard as part of a collaboration across <em>Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University</em>. The project aims to reconstruct <strong>10&nbsp;mm³</strong> of adult mouse cortex at nanometer resolution. I operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a <strong>91-beam</strong> scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.</p>
       <div class="hero-cta">
         <a class="btn primary" href="#projects">See projects</a>
