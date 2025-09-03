@@ -197,16 +197,16 @@
 /* === 2-column layout for Interest (animation left, text right) === */
 .interest-inline{
   display:grid;
-  grid-template-columns: min(360px, 38vw) 1fr; /* 左列固定上限，右列自适应 */
+  grid-template-columns: min(360px, 38vw) 1fr; 
   align-items:center;
   gap:16px 24px;
   margin:12px 0 0;
 }
-.gnn-inline{ width:100%; margin:0 }          /* 占满左列 */
+.gnn-inline{ width:100%; margin:0 }          
 .gnn-inline .gnn-card{ border-radius:16px }
 .gnn-inline .edge{ stroke-width:3.2 }
 .gnn-inline .node{ stroke-width:2 }
-.gnn-inline .gnn-glow{ display:none }        /* 去掉大光晕，避免喧宾夺主 */
+.gnn-inline .gnn-glow{ display:none }       
 
 .interest-text{
   font-size:clamp(15px,2vw,18px);
@@ -215,7 +215,7 @@
 }
 
 @media (max-width: 820px){
-  .interest-inline{ grid-template-columns: 1fr; } /* 小屏堆叠 */
+  .interest-inline{ grid-template-columns: 1fr; } 
 }
 
   </style>
@@ -249,11 +249,11 @@
 
       <!-- Interests (medium inline GNN + text) -->
 <section id="interests" class="interest-inline">
-  <!-- 左列：GNN 动图（保持你现有 SVG 与脚本） -->
+
   <div class="gnn-wrap gnn-inline">
     <div class="gnn-card">
       <svg class="gnn-stage" viewBox="0 0 900 380" role="img" aria-label="Animated Graph Neural Network">
-        <!-- defs / groups 同你当前代码 -->
+
         <defs> … </defs>
         <g id="edges"></g>
         <g id="nodes"></g>
@@ -263,7 +263,7 @@
     </div>
   </div>
 
-  <!-- 右列：Interest 文案（独立 div） -->
+
   <div class="interest-text">
     <strong>Interest:</strong>
     to advance scalable computer vision and multimodal learning algorithms inspired by, but not limited to,
@@ -271,7 +271,7 @@
   </div>
 </section>
 
-<!-- 紧随其后保留你的 <script>（绘制边/点/消息的那段） -->
+
 
 
       <!-- GNN script -->
@@ -372,7 +372,7 @@
       <div style="margin-top:8px">
         <span class="chip">Architecture Sparsity</span><span class="chip">ASR/LM</span><span class="chip">CV</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">repo</a> · <a href="#" target="_blank" rel="noopener">benchmark</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">repo</a> https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet</p>
     </article>
 
     <!-- 3) Seriation -->
@@ -384,7 +384,7 @@
       <div style="margin-top:8px">
         <span class="chip">O(N(log N + K))</span><span class="chip">Graph Theory</span><span class="chip">Imaging</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">repo</a> · <a href="#" target="_blank" rel="noopener">benchmark</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener"> https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation </a></p>
     </article>
 
     <!-- 4) WaferTools -->
@@ -396,7 +396,7 @@
       <div style="margin-top:8px">
         <span class="chip">Software</span><span class="chip">Benchmarks</span><span class="chip">Imaging</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">repo</a> · <a href="#" target="_blank" rel="noopener">benchmark</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="#" target="_blank" rel="noopener">https://github.com/FumingYang-Felix/WaferTools</a></p>
     </article>
   </div>
 </section>
