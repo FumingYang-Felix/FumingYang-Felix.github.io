@@ -510,7 +510,7 @@
       venue: '<strong>bioRxiv preprint</strong>',
       year: 2025,
       track: 'software',
-      links: { pdf: '#', code: '#', project: '#' }
+      links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/WaferTools' }
     },
 
     // --- CS / ML & Theory ---
@@ -520,7 +520,7 @@
       venue: '<strong>submitting to (CVPR–CVMI)</strong>',
       year: 2025,
       track: 'cs',
-      links: { pdf: '#', code: '#', project: '#' }
+      links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation', benchmark:'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark' }
     },
     {
       title: 'Budgeted Broadcast (BB): Reallocation Strategy for Model Efficient Learning',
@@ -528,7 +528,7 @@
       venue: '<strong>Submitting to (ICLR)</strong>',
       year: 2025,
       track: 'cs',
-      links: { pdf: '#', code: '#', slides: '#' }
+      links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet' }
     },
 
     // --- Other ---
@@ -546,7 +546,7 @@
   const trackLabel = { cs: 'CV/ML', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
 
   function render(flt = 'all') {
-    const key = String(flt || 'all').toLowerCase().trim();            // 忽略大小写/空格
+    const key = String(flt || 'all').toLowerCase().trim();           
     const items = publications
       .filter(p => key === 'all' ? true : String(p.track || '').toLowerCase().trim() === key)
       .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
@@ -561,9 +561,9 @@
           </div>
           <div style="margin-top:6px">
             ${p.links && p.links.pdf ? `<a href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
-            ${p.links && p.links.code ? ` · <a href="${p.links.code}" target="_blank" rel="noopener">code</a>` : ''}
+            ${p.links && p.links.code ? ` · <a href="${p.links.code}" target="_blank" rel="noopener">repo</a>` : ''}
             ${p.links && p.links.project ? ` · <a href="${p.links.project}" target="_blank" rel="noopener">project</a>` : ''}
-            ${p.links && p.links.slides ? ` · <a href="${p.links.slides}" target="_blank" rel="noopener">slides</a>` : ''}
+            ${p.links && p.links.slides ? ` · <a href="${p.links.slides}" target="_blank" rel="noopener">benchmark</a>` : ''}
             ${p.links && p.links.other ? ` · <a href="${p.links.other}" target="_blank" rel="noopener">link</a>` : ''}
           </div>
         </div>
