@@ -50,24 +50,25 @@
     a { color: rgb(var(--accent1)); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { width: min(1100px, 92vw); margin-inline: auto; }
+
     /* --- Gym card: subtle gradient border + dumbbell icon --- */
-.card.gym{
-  position:relative; border:1px solid transparent; border-radius: var(--radius);
-  background: rgb(var(--card)/.7);
-}
-.card.gym::before{
-  content:""; position:absolute; inset:0; padding:1px; border-radius:inherit;
-  background: linear-gradient(135deg, rgb(var(--accent1)/.85), rgb(var(--accent2)/.85));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;  /* 只显示边框那一圈 */
-  pointer-events:none; opacity:.9;
-}
-.about-line{
-  display:flex; align-items:center; gap:10px; margin:0; font-weight:600;
-}
-.dumbbell{ width:22px; height:22px; color: rgb(var(--accent1)); transition:transform .18s ease; }
-.card.gym:hover .dumbbell{ transform: rotate(-10deg) translateY(-1px); }
+    .card.gym{
+      position:relative; border:1px solid transparent; border-radius: var(--radius);
+      background: rgb(var(--card)/.7);
+    }
+    .card.gym::before{
+      content:""; position:absolute; inset:0; padding:1px; border-radius:inherit;
+      background: linear-gradient(135deg, rgb(var(--accent1)/.85), rgb(var(--accent2)/.85));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;  /* 只显示边框那一圈 */
+      pointer-events:none; opacity:.9;
+    }
+    .about-line{
+      display:flex; align-items:center; gap:10px; margin:0; font-weight:600;
+    }
+    .dumbbell{ width:22px; height:22px; color: rgb(var(--accent1)); transition:transform .18s ease; }
+    .card.gym:hover .dumbbell{ transform: rotate(-10deg) translateY(-1px); }
 
 
     /* ---------------- Header ---------------- */
@@ -147,6 +148,14 @@
     .badge { font-size: 12px; padding: 3px 8px; border-radius: 999px; border:1px solid rgb(var(--fg)/.1); background: rgb(var(--card)/.6); }
     .badge.under { border-color: rgb(var(--ring)/.4); color: rgb(var(--accent1)); }
     .badge.preprint { border-color: rgb(34 197 94 / .5); color: rgb(34 197 94); }
+
+    /* --- NEW: authorship role badges --- */
+    .badge.role{ border-color: rgb(var(--fg)/.18); color: rgb(var(--muted)); }
+    .badge.role.first{ border-color: rgba(34,197,94,.55); color: rgb(34 197 94); }
+    .badge.role.cofirst{ border-color: rgba(34,197,94,.55); color: rgb(34 197 94); }
+    .badge.role.co{ border-color: rgba(100,116,139,.45); color: rgb(100 116 139); }
+    .badge.role.senior{ border-color: rgba(14,165,233,.55); color: rgb(14 165 233); }
+    .badge.role.lead{ border-color: rgba(34,197,94,.55); color: rgb(34 197 94); }
 
     /* ---------------- Footer ---------------- */
     footer { padding: 40px 0 72px; color: rgb(var(--muted)); font-size: 14px; }
@@ -368,7 +377,7 @@
       <div class="rings" aria-hidden="true"></div>
       <div class="kicker">AI · Bio-inspired</div>
       <h3>Budgeted Broadcast — <strong> Model Efficient Learning Strategy</strong></h3>
-      <p></p>
+      <p> A reallocation strategy for efficient learning across ASR/LM/CV; code and preprint below.</p>
       <div style="margin-top:8px">
         <span class="chip">Architecture Sparsity</span><span class="chip">ASR/LM</span><span class="chip">CV</span>
       </div>
@@ -414,15 +423,36 @@
         <div class="card">
           <h3 style="margin-top:0">Neuroscience & Software</h3>
           <div class="pub">
+            <strong>Developmental Connectomics of the Mouse Cerebellum</strong><br/>
+            <em>Fuming Yang</em> (co-author) · <em>Nature (under review)</em>.
+            <div class="badges"><span class="badge preprint">preprint</span><span class="badge">Neuroscience</span><span class="badge role co">Co-author</span></div>
+            <div style="margin-top:6px"><a href="https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1" target="_blank" rel="noopener">link</a> · <a href="https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf" target="_blank" rel="noopener">PDF</a></div>
+            <details style="margin-top:6px"><summary>BibTeX</summary>
+              <pre style="white-space:pre-wrap;overflow:auto;margin:6px 0 0;font-size:12px;line-height:1.45">@article{Dhanyasi2025DevConnectomicsCerebellum,
+  title        = {Developmental Connectomics of the Mouse Cerebellum},
+  author       = {Nagaraju Dhanyasi and Yaron Meirovitch and Vikrant Kapoor and Alyssa M. Wilson and Shuohong Wang and Donglai Wei and Richard Schalek and Rong Ma and Yuelong Wu and Akhila Manthena and Diego Cordero Cervantes and Zudi Lin and Yunlei Liu and Sanjana Chimaladinne and Benjamin Morris and Indu A. Vaddiparti and Yan Zhu and Sanjana Dokiburra and Riti Parampalli and Fuming Yang and Daniel R. Berger and Hanspeter Pfister and Venkatesh N. Murthy and Jeff W. Lichtman},
+  journal      = {bioRxiv},
+  year         = {2025},
+  month        = {September},
+  day          = {16},
+  publisher    = {Cold Spring Harbor Laboratory},
+  doi          = {10.1101/2025.09.15.676403},
+  url          = {https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1},
+  note         = {Preprint},
+  version      = {1}
+}</pre>
+            </details>
+          </div>
+          <div class="pub">
             <strong>Connectomic evidence that ordered activity drives neuromuscular network formation</strong><br/>
             <em>Fuming Yang</em> (co-author) · <em>Nature Neuroscience</em>.
-            <div class="badges"><span class="badge preprint">Accept</span><span class="badge">Development</span><span class="badge">Connectomics</span></div>
+            <div class="badges"><span class="badge preprint">Accept</span><span class="badge">Development</span><span class="badge">Connectomics</span><span class="badge role co">Co-author</span></div>
             <div style="margin-top:6px"><a href="#" target="_blank">PDF</a></div>
           </div>
           <div class="pub">
             <strong>WaferTools: wafer‑to‑volume electron microscopy pipeline</strong><br/>
             <em>Fuming Yang</em> (first author) · bioRxiv preprint.
-            <div class="badges"><span class="badge preprint">preprint</span><span class="badge">Software</span><span class="badge">Connectomics</span></div>
+            <div class="badges"><span class="badge preprint">preprint</span><span class="badge">Software</span><span class="badge">Connectomics</span><span class="badge role lead">First / Co-first author</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="https://github.com/FumingYang-Felix/WaferTools" target="_blank" rel="noopener">repo</a></div>
           </div>
         </div>
@@ -433,13 +463,13 @@
           <div class="pub">
             <strong>Near-linear Graph Condensation-Densification and SuperChain for Quasi-monotonic Morphological Sequence Recovery</strong><br/>
             <em>Fuming Yang</em> (first author) · submitting to (CVPR–CVMI).
-            <div class="badges"><span class="badge under">under review</span><span class="badge">Graphs Theory</span><span class="badge">Imaging</span></div>
+            <div class="badges"><span class="badge under">under review</span><span class="badge">Graphs Theory</span><span class="badge">Imaging</span><span class="badge role lead">First / Co-first author</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation">repo</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark">benchmark</a></div>
           </div>
           <div class="pub">
             <strong>Budgeted Broadcast (BB): Reallocation Strategy for Model Efficient Learning</strong><br/>
-            <em>Fuming Yang</em> (first author) · submitting to (ICLR).
-            <div class="badges"><span class="badge under">under review</span><span class="badge">Architecture Sparsity</span><span class="badge">ASR/LM</span><span class="chip">CV</span></div>
+            <em>Fuming Yang</em> (co-first author; 2nd author) · submitting to (ICLR).
+            <div class="badges"><span class="badge under">under review</span><span class="badge">Architecture Sparsity</span><span class="badge">ASR/LM</span><span class="chip">CV</span><span class="badge role lead">First / Co-first author</span></div>
             <div style="margin-top:6px"><a href="#">PDF</a> · <a href="https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet">repo</a></div>
           </div>
         </div>
@@ -474,6 +504,7 @@
       venue: '<strong>eLife</strong>',
       year: 2025,
       track: 'neuro',
+      role: 'co',
       links: { other: 'https://elifesciences.org/reviewed-preprints/105973v1' }
     },
     {
@@ -482,6 +513,7 @@
       venue: '<strong>Nature Neuroscience</strong>', 
       year: 2025, 
       track: 'neuro',
+      role: 'co',
       links: {
         pdf: 'https://www.biorxiv.org/content/10.1101/2021.09.20.460480v3.full.pdf',
         other: 'https://doi.org/10.1101/2021.09.20.460480'
@@ -493,41 +525,56 @@
       venue: '<strong>eLife</strong>',
       year: 2023,
       track: 'neuro',
+      role: 'co',
       links: { other: 'https://elifesciences.org/articles/84257' }
     },
     {
-  
       title: 'mEMbrain: an interactive deep learning MATLAB tool for connectomic segmentation on commodity desktops',
       authors: 'E.C. Pavarino, E. Yang, N. Dhanyasi, M.D. Wang, F. Bidel, X. Lu, <strong>F. Yang</strong>, C.F. Park, M.B. Drescher, A. Samuel, B. Hochner, P. Katz, M. Zhen, J.W. Lichtman, Y. Meirovitch',
       venue: '<strong>Frontiers in Neural Circuits</strong>',
       year: 2023,
       track: 'software',
+      role: 'co',
       links: { other: 'https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2023.952921/full' }
     },
     {
       title: 'WaferTools: wafer-to-volume electron microscopy pipeline',
-      authors: '<strong>F. Yang</strong> et al.',
+      authors: '<strong>F. Yang</strong>, Y. Meirovitch, F. Araújo, R. Schalek, V. Susoy, J.W. Lichtman',
       venue: '<strong>bioRxiv preprint</strong>',
       year: 2025,
       track: 'software',
+      role: 'lead',
       links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/WaferTools' }
+    },
+
+    // --- NEW (Neuroscience 2025 bioRxiv) ---
+    {
+      title: 'Developmental Connectomics of the Mouse Cerebellum',
+      authors: 'N. Dhanyasi, Y. Meirovitch, V. Kapoor, A.M. Wilson, S. Wang, D. Wei, R. Schalek, R. Ma, Y. Wu, A. Manthena, D.C. Cervantes, Z. Lin, Y. Liu, S. Chimaladinne, B. Morris, I.A. Vaddiparti, Y. Zhu, S. Dokiburra, R. Parampalli, <strong>F. Yang</strong>, D.R. Berger, H. Pfister, V.N. Murthy, J.W. Lichtman',
+      venue: '<strong> Nature (under review) - bioRxiv preprint</strong>',
+      year: 2025,
+      track: 'neuro',
+      role: 'co',
+      links: { pdf: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf', other: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1' }
     },
 
     // --- CS / ML & Theory ---
     {
       title: 'Near-linear Graph Condensation-Densification and SuperChain for Quasi-monotonic Morphological Sequence Recovery',
-      authors: '<strong>F. Yang</strong> et al.',
+      authors: '<strong>F. Yang</strong>, J.W. Lichtman, V. Susoy, Y. Meirovitch',
       venue: '<strong>submitting to (CVPR–CVMI)</strong>',
       year: 2025,
       track: 'cs',
+      role: 'lead',
       links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation', benchmark:'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark' }
     },
     {
       title: 'Budgeted Broadcast (BB): Reallocation Strategy for Model Efficient Learning',
-      authors: '<strong>F. Yang</strong> et al.',
+      authors: 'Y. Meirovitch, <strong>F. Yang</strong>, J.W. Lichtman, N. Shavit',
       venue: '<strong>Submitting to (ICLR)</strong>',
       year: 2025,
       track: 'cs',
+      role: 'lead',
       links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet' }
     },
 
@@ -538,12 +585,14 @@
       venue: '<strong>Journal of Autism and Developmental Disorders</strong>',
       year: 2024,
       track: 'other',
+      role: 'co',
       links: { other: 'https://link.springer.com/article/10.1007/s10803-024-06675-x' }
     }
   ];
 
   const publist = document.getElementById('publist');
   const trackLabel = { cs: 'CV/ML', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
+  const roleLabel = { lead: 'First / Co-first author', co: 'Co-author', senior: 'Senior author' };
 
   function render(flt = 'all') {
     const key = String(flt || 'all').toLowerCase().trim();           
@@ -558,6 +607,7 @@
           ${p.authors} · ${p.venue}
           <div class="badges">
             <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track}</span>
+            ${p.role ? `<span class="badge role ${p.role}">${roleLabel[p.role] || p.role}</span>` : ''}
           </div>
           <div style="margin-top:6px">
             ${p.links && p.links.pdf ? `<a href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
@@ -609,7 +659,7 @@
       <div class="card">
         <p>If you have any questions about the software or the code implementation, please feel free to contact me! </br>
         I’m also happy to help with any other technical challenges / integration issues you’re facing! </p>
-        <p>Email: <a href="fumingyang@fas.harvard.edu">fumingyang@fas.harvard.edu</a> · GitHub: <a href="https://github.com/fumingyang-felix" target="_blank">@FumingYang-Felix</a> · Scholar: <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar</a> · Twitter: <a href="#" target="_blank">@handle</a></p>
+        <p>Email: <a href="mailto:fumingyang@fas.harvard.edu">fumingyang@fas.harvard.edu</a> · GitHub: <a href="https://github.com/fumingyang-felix" target="_blank">@FumingYang-Felix</a> · Scholar: <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ&hl=en" target="_blank">Google Scholar</a> · Twitter: <a href="#" target="_blank">@handle</a></p>
       </div>
     </section>
   </main>
