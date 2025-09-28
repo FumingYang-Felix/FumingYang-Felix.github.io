@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fuming (Felix) Yang — Research Fellow in Lichtman Lab at Harvard University</title>
-  <meta name="description" content="Fuming (Felix) Yang. Theory-motivated ML (Math&Bio) and High-throughput algorithms focusing on sparsing models, optimization, multimodal learning, and foundation model." />
+  <meta name="description" content="Fuming (Felix) Yang. Theory-motivated ML (Math & Bio) and high-throughput algorithms focusing on sparse models, optimization, multimodal learning, and foundation models." />
   <meta name="theme-color" content="#0ea5e9" />
   <!-- OpenGraph / Twitter -->
   <meta property="og:title" content="Fuming (Felix) Yang" />
@@ -61,7 +61,7 @@
       background: linear-gradient(135deg, rgb(var(--accent1)/.85), rgb(var(--accent2)/.85));
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
               mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;  /* 只显示边框那一圈 */
+      -webkit-mask-composite: xor; mask-composite: exclude;  /* border-only gradient */
       pointer-events:none; opacity:.9;
     }
     .about-line{
@@ -149,7 +149,7 @@
     .badge.under { border-color: rgb(var(--ring)/.4); color: rgb(var(--accent1)); }
     .badge.preprint { border-color: rgb(34 197 94 / .5); color: rgb(34 197 94); }
 
-    /* --- NEW: authorship role badges --- */
+    /* --- authorship role badges --- */
     .badge.role{ border-color: rgb(var(--fg)/.18); color: rgb(var(--muted)); }
     .badge.role.first{ border-color: rgba(34,197,94,.55); color: rgb(34 197 94); }
     .badge.role.cofirst{ border-color: rgba(34,197,94,.55); color: rgb(34 197 94); }
@@ -203,29 +203,29 @@
     @keyframes pulse{ 0%{transform:scale(.95)} 50%{transform:scale(1.08)} 100%{transform:scale(.95)} }
     @media (prefers-reduced-motion:reduce){ .edge.dashed{animation:none} .pulse{animation:none} }
 
-/* === 2-column layout for Interest (animation left, text right) === */
-.interest-inline{
-  display:grid;
-  grid-template-columns: min(360px, 38vw) 1fr; 
-  align-items:center;
-  gap:16px 24px;
-  margin:12px 0 0;
-}
-.gnn-inline{ width:100%; margin:0 }          
-.gnn-inline .gnn-card{ border-radius:16px }
-.gnn-inline .edge{ stroke-width:3.2 }
-.gnn-inline .node{ stroke-width:2 }
-.gnn-inline .gnn-glow{ display:none }       
+    /* === 2-column layout for Interest (animation left, text right) === */
+    .interest-inline{
+      display:grid;
+      grid-template-columns: min(360px, 38vw) 1fr; 
+      align-items:center;
+      gap:16px 24px;
+      margin:12px 0 0;
+    }
+    .gnn-inline{ width:100%; margin:0 }          
+    .gnn-inline .gnn-card{ border-radius:16px }
+    .gnn-inline .edge{ stroke-width:3.2 }
+    .gnn-inline .node{ stroke-width:2 }
+    .gnn-inline .gnn-glow{ display:none }       
 
-.interest-text{
-  font-size:clamp(15px,2vw,18px);
-  line-height:1.6;
-  max-width:70ch;
-}
+    .interest-text{
+      font-size:clamp(15px,2vw,18px);
+      line-height:1.6;
+      max-width:70ch;
+    }
 
-@media (max-width: 820px){
-  .interest-inline{ grid-template-columns: 1fr; } 
-}
+    @media (max-width: 820px){
+      .interest-inline{ grid-template-columns: 1fr; } 
+    }
 
   </style>
 </head>
@@ -262,8 +262,21 @@
   <div class="gnn-wrap gnn-inline">
     <div class="gnn-card">
       <svg class="gnn-stage" viewBox="0 0 900 380" role="img" aria-label="Animated Graph Neural Network">
-
-        <defs> … </defs>
+        <defs>
+          <!-- gradient for edges -->
+          <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"  stop-color="rgb(14,165,233)" />
+            <stop offset="100%" stop-color="rgb(99,102,241)" />
+          </linearGradient>
+          <!-- soft glow filter for messages -->
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
         <g id="edges"></g>
         <g id="nodes"></g>
         <g id="messages" filter="url(#softGlow)"></g>
@@ -275,7 +288,7 @@
 
   <div class="interest-text">
     <strong>Interest:</strong>
-    Theory-motivated ML (Math&Bio) and High-throughput algorithms focusing on sparsing models, optimization, multimodal learning, and foundation model.
+    Theory-motivated ML (Math & Bio) and high-throughput algorithms focusing on sparse models, optimization, multimodal learning, and foundation models.
   </div>
 </section>
 
@@ -286,6 +299,7 @@
       <script>
       (function(){
         const svg = document.querySelector('#interests .gnn-stage');
+        if(!svg) return;
         const Gedges = svg.querySelector('#edges');
         const Gnodes = svg.querySelector('#nodes');
         const Gmsgs  = svg.querySelector('#messages');
@@ -380,7 +394,7 @@
       <div style="margin-top:8px">
         <span class="chip">Architecture Sparsity</span><span class="chip">ASR/LM</span><span class="chip">CV</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet" target="_blank" rel="noopener">repo</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet" target="_blank" rel="noopener">repo</a></p>
     </article>
 
     <!-- 3) Seriation -->
@@ -392,7 +406,7 @@
       <div style="margin-top:8px">
         <span class="chip">O(N(log N + K))</span><span class="chip">Graph Theory</span><span class="chip">CV</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation" target="_blank" rel="noopener">repo</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark">benchmark</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation" target="_blank" rel="noopener">repo</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark" target="_blank" rel="noopener">benchmark</a> · <a href="https://youtu.be/f8raYfpha_k" target="_blank" rel="noopener">YouTube</a></p>
     </article>
 
     <!-- 4) WaferTools -->
@@ -404,7 +418,7 @@
       <div style="margin-top:8px">
         <span class="chip">Software</span><span class="chip">Benchmarks</span><span class="chip">Imaging</span>
       </div>
-      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">preprint</a> · <a href="https://github.com/FumingYang-Felix/WaferTools" target="_blank" rel="noopener">repo</a></p>
+      <p style="margin-top:10px"><a href="#" target="_blank" rel="noopener">arXiv</a> · <a href="https://github.com/FumingYang-Felix/WaferTools" target="_blank" rel="noopener">repo</a></p>
     </article>
   </div>
 </section>
@@ -424,10 +438,10 @@
         <div class="card">
           <h3 style="margin-top:0">CV / ML & Theory</h3>
           <div class="pub">
-            <strong>Near-linear Graph Condensation-Densification and SuperChain for Quasi-monotonic Morphological Sequence Recovery</strong><br/>
-            <em>CVPR–CVMI (submitting)</em>
-            <div class="badges"><span class="badge under">preprint</span><span class="badge">Graphs Theory</span><span class="badge">Imaging</span><span class="badge role lead">First / Co-first author</span></div>
-            <div style="margin-top:6px"><a href="#">PDF</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation">repo</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark">benchmark</a></div>
+            <strong>Sparse Graph Reconstruction and Seriation for Large-Scale Image Stacks</strong><br/>
+            <em>CVPR (submitting)</em>
+            <div class="badges"><span class="badge under">preprint</span><span class="badge">Graph Theory</span><span class="badge">Imaging</span><span class="badge role lead">First / Co-first author</span></div>
+            <div style="margin-top:6px"><a href="#">PDF</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation">repo</a> · <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark" target="_blank" rel="noopener">benchmark</a> · <a href="https://youtu.be/f8raYfpha_k" target="_blank" rel="noopener">YouTube</a></div>
           </div>
           <div class="pub">
             <strong>Budgeted Broadcast: An Activity-Dependent Pruning Rule for Neural Network Efficiency</strong><br/>
@@ -481,8 +495,13 @@
       </div>
 
 <script>
+(function(){
+  'use strict';
+  function $(sel){ return document.querySelector(sel) }
+  const publist = $('#publist');
+
   // === Publication data (fixed & normalized) ===
-  // links 统一使用：pdf / repo / arxiv / benchmark / other
+  // links use: pdf / repo / arxiv / benchmark / other
   const publications = [
     // --- Neuroscience & Systems ---
     {
@@ -497,8 +516,8 @@
     {
       title: 'Neuromuscular connectomes across development reveal synaptic ordering rules',
       authors: 'Y. Meirovitch, K. Kang, R.W. Draft, E.C. Pavarino, M.F. Echeverri, <strong>F. Yang</strong>, S.G. Turney, D.R. Berger, A. Peleg, M. Montero-Crespo, R.L. Schalek, J. Lu, J. Livet, J.C. Tapia, J.W. Lichtman',
-      venue: '<strong>Nature Neuroscience</strong>',
-      year: 2025,
+      venue: '<strong>Nature Neuroscience</strong>', 
+      year: 2025, 
       track: 'neuro',
       role: 'co',
       links: {
@@ -533,6 +552,8 @@
       role: 'lead',
       links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/WaferTools' }
     },
+
+    // --- NEW (Neuroscience 2025 bioRxiv) ---
     {
       title: 'Developmental Connectomics of the Mouse Cerebellum',
       authors: 'N. Dhanyasi, Y. Meirovitch, V. Kapoor, A.M. Wilson, S. Wang, D. Wei, R. Schalek, R. Ma, Y. Wu, A. Manthena, D.C. Cervantes, Z. Lin, Y. Liu, S. Chimaladinne, B. Morris, I.A. Vaddiparti, Y. Zhu, S. Dokiburra, R. Parampalli, <strong>F. Yang</strong>, D.R. Berger, H. Pfister, V.N. Murthy, J.W. Lichtman',
@@ -540,10 +561,7 @@
       year: 2025,
       track: 'neuro',
       role: 'co',
-      links: {
-        pdf: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf',
-        other: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1'
-      }
+      links: { pdf: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf', other: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1' }
     },
 
     // --- CS / ML & Theory ---
@@ -554,11 +572,7 @@
       year: 2025,
       track: 'cs',
       role: 'lead',
-      links: {
-        arxiv: '#',
-        repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation',
-        benchmark: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark'
-      }
+      links: { arxiv: '#', repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation', benchmark: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark', youtube: 'https://youtu.be/f8raYfpha_k' }
     },
     {
       title: 'Budgeted Broadcast: An Activity-Dependent Pruning Rule for Neural Network Efficiency',
@@ -582,7 +596,6 @@
     }
   ];
 
-  const publist = document.getElementById('publist');
   const trackLabel = { cs: 'CV/ML', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
   const roleLabel  = { lead: 'First / Co-first author', cofirst: 'Co-first author', co: 'Co-author', senior: 'Senior author' };
 
@@ -592,39 +605,50 @@
     if (links.pdf)       parts.push(`<a href="${links.pdf}" target="_blank" rel="noopener">PDF</a>`);
     if (links.repo)      parts.push(`<a href="${links.repo}" target="_blank" rel="noopener">repo</a>`);
     if (links.arxiv)     parts.push(`<a href="${links.arxiv}" target="_blank" rel="noopener">arXiv</a>`);
-    if (links.benchmark) parts.push(`<a href="${links.benchmark}" target="_blank" rel="noopener">benchmark</a>`);
+    if (links.benchmark) parts.push(`<a href="${links.benchmark}" target="_blank" rel="noopener">benchmark<\/a>`);
+    if (links.youtube)     parts.push(`<a href="${links.youtube}" target="_blank" rel="noopener">YouTube<\/a>`);
     if (links.other)     parts.push(`<a href="${links.other}" target="_blank" rel="noopener">link</a>`);
     return parts.length ? `<div style="margin-top:6px">${parts.join(' · ')}</div>` : '';
   }
 
   function render(flt = 'all') {
-    const key = String(flt || 'all').toLowerCase().trim();
-    const items = publications
-      .filter(p => key === 'all' ? true : String(p.track || '').toLowerCase().trim() === key)
-      .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
+    try{
+      if(!publist){ throw new Error('#publist not found in DOM') }
+      const key = String(flt || 'all').toLowerCase().trim();
+      const items = publications
+        .filter(p => key === 'all' ? true : String(p.track || '').toLowerCase().trim() === key)
+        .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
 
-    publist.innerHTML = items.length
-      ? items.map(p => `
-        <div class="pub">
-          <strong>${p.title}</strong> <span class="muted">(${p.year || ''})</span><br/>
-          ${p.authors} · ${p.venue}
-          <div class="badges">
-            <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track || ''}</span>
-            ${p.role ? `<span class="badge role ${p.role}">${roleLabel[p.role] || p.role}</span>` : ''}
+      publist.innerHTML = items.length
+        ? items.map(p => `
+          <div class="pub">
+            <strong>${p.title}</strong> <span class="muted">(${p.year || ''})</span><br/>
+            ${p.authors} · ${p.venue}
+            <div class="badges">
+              <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track || ''}</span>
+              ${p.role ? `<span class="badge role ${p.role}">${roleLabel[p.role] || p.role}</span>` : ''}
+            </div>
+            ${linkLine(p.links)}
           </div>
-          ${linkLine(p.links)}
-        </div>
-      `).join('')
-      : `<div class="muted">No entries under <b>${trackLabel[key] || key}</b> yet.</div>`;
+        `).join('')
+        : `<div class="muted">No entries under <b>${trackLabel[key] || key}</b> yet.</div>`;
+      console.log(`[publist] rendered ${items.length} items for filter=`, key);
+    }catch(err){
+      console.error('[publist] render error:', err);
+      if (publist) {
+        publist.innerHTML = `<pre style="white-space:pre-wrap; padding:10px; border:1px solid #e11; border-radius:8px; background:rgba(255,0,0,.05)">Render error: ${err && err.message ? err.message : err}</pre>`;
+      }
+    }
   }
 
-  // initial render + filter buttons
-  render();
-  document.querySelectorAll('#allpubs [data-filter]').forEach(btn => {
-    btn.addEventListener('click', () => render(btn.dataset.filter));
+  window.addEventListener('DOMContentLoaded', function(){
+    render('all');
+    document.querySelectorAll('#allpubs [data-filter]').forEach(function(btn){
+      btn.addEventListener('click', function(){ render(btn.dataset.filter) });
+    });
   });
+})();
 </script>
-
 </section>
 
 <section id="about">
