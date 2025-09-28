@@ -481,13 +481,14 @@
       </div>
 
 <script>
-  // === Publication data ===
+  // === Publication data (fixed & normalized) ===
+  // links 统一使用：pdf / repo / arxiv / benchmark / other
   const publications = [
     // --- Neuroscience & Systems ---
     {
       title: 'Cellular and synaptic organization of the Octopus vertical lobe',
       authors: 'F. Bidel, Y. Meirovitch, <strong>F. Yang</strong>, J.W. Lichtman, B. Hochner',
-      venue: '<strong>eLife</strong>',
+      venue: '<strong>eLife (reviewed preprint)</strong>',
       year: 2025,
       track: 'neuro',
       role: 'co',
@@ -496,8 +497,8 @@
     {
       title: 'Neuromuscular connectomes across development reveal synaptic ordering rules',
       authors: 'Y. Meirovitch, K. Kang, R.W. Draft, E.C. Pavarino, M.F. Echeverri, <strong>F. Yang</strong>, S.G. Turney, D.R. Berger, A. Peleg, M. Montero-Crespo, R.L. Schalek, J. Lu, J. Livet, J.C. Tapia, J.W. Lichtman',
-      venue: '<strong>Nature Neuroscience</strong>', 
-      year: 2025, 
+      venue: '<strong>Nature Neuroscience</strong>',
+      year: 2025,
       track: 'neuro',
       role: 'co',
       links: {
@@ -526,42 +527,47 @@
     {
       title: 'WaferTools: wafer-to-volume electron microscopy pipeline',
       authors: '<strong>F. Yang</strong>, Y. Meirovitch, F. Araújo, R. Schalek, V. Susoy, J.W. Lichtman',
-      venue: '<strong>bioRxiv preprint</strong>',
+      venue: '<strong>bioRxiv (preprint)</strong>',
       year: 2025,
       track: 'software',
       role: 'lead',
       links: { pdf: '#', repo: 'https://github.com/FumingYang-Felix/WaferTools' }
     },
-
-    // --- NEW (Neuroscience 2025 bioRxiv) ---
     {
       title: 'Developmental Connectomics of the Mouse Cerebellum',
       authors: 'N. Dhanyasi, Y. Meirovitch, V. Kapoor, A.M. Wilson, S. Wang, D. Wei, R. Schalek, R. Ma, Y. Wu, A. Manthena, D.C. Cervantes, Z. Lin, Y. Liu, S. Chimaladinne, B. Morris, I.A. Vaddiparti, Y. Zhu, S. Dokiburra, R. Parampalli, <strong>F. Yang</strong>, D.R. Berger, H. Pfister, V.N. Murthy, J.W. Lichtman',
-      venue: '<strong> Nature (under review) - bioRxiv preprint</strong>',
+      venue: '<strong>Nature (under review) – bioRxiv preprint</strong>',
       year: 2025,
       track: 'neuro',
       role: 'co',
-      links: { pdf: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf', other: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1' }
+      links: {
+        pdf: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1.full.pdf',
+        other: 'https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1'
+      }
     },
 
     // --- CS / ML & Theory ---
     {
       title: 'Sparse Graph Reconstruction and Seriation for Large-Scale Image Stacks',
-      authors: '<strong>F. Yang</strong>, Y. Meirovitch'，'J.W. Lichtman',
-      venue: '<strong>submitting to (CVPR)</strong>',
+      authors: '<strong>F. Yang</strong>, Y. Meirovitch, J.W. Lichtman',
+      venue: '<strong>Submitting to CVPR</strong>',
       year: 2025,
       track: 'cs',
       role: 'lead',
-      links: { arXiv: '#', repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation', benchmark:'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark' }
+      links: {
+        arxiv: '#',
+        repo: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation',
+        benchmark: 'https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark'
+      }
     },
     {
       title: 'Budgeted Broadcast: An Activity-Dependent Pruning Rule for Neural Network Efficiency',
       authors: 'Y. Meirovitch, <strong>F. Yang</strong>, J.W. Lichtman, N. Shavit',
-      venue: '<strong>Submitting to (ICLR)</strong>',
+      venue: '<strong>Submitting to ICLR</strong>',
       year: 2025,
       track: 'cs',
       role: 'lead',
-      links: { arXiv: '#', repo: 'https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet' }
+      links: { arxiv: '#', repo: 'https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet' }
     },
 
     // --- Other ---
@@ -578,10 +584,21 @@
 
   const publist = document.getElementById('publist');
   const trackLabel = { cs: 'CV/ML', software: 'Software', neuro: 'Neuroscience', other: 'Psychiatry' };
-  const roleLabel = { lead: 'First / Co-first author', co: 'Co-author', senior: 'Senior author' };
+  const roleLabel  = { lead: 'First / Co-first author', cofirst: 'Co-first author', co: 'Co-author', senior: 'Senior author' };
+
+  function linkLine(links) {
+    if (!links) return '';
+    const parts = [];
+    if (links.pdf)       parts.push(`<a href="${links.pdf}" target="_blank" rel="noopener">PDF</a>`);
+    if (links.repo)      parts.push(`<a href="${links.repo}" target="_blank" rel="noopener">repo</a>`);
+    if (links.arxiv)     parts.push(`<a href="${links.arxiv}" target="_blank" rel="noopener">arXiv</a>`);
+    if (links.benchmark) parts.push(`<a href="${links.benchmark}" target="_blank" rel="noopener">benchmark</a>`);
+    if (links.other)     parts.push(`<a href="${links.other}" target="_blank" rel="noopener">link</a>`);
+    return parts.length ? `<div style="margin-top:6px">${parts.join(' · ')}</div>` : '';
+  }
 
   function render(flt = 'all') {
-    const key = String(flt || 'all').toLowerCase().trim();           
+    const key = String(flt || 'all').toLowerCase().trim();
     const items = publications
       .filter(p => key === 'all' ? true : String(p.track || '').toLowerCase().trim() === key)
       .sort((a, b) => (b.year || 0) - (a.year || 0) || a.title.localeCompare(b.title));
@@ -589,29 +606,25 @@
     publist.innerHTML = items.length
       ? items.map(p => `
         <div class="pub">
-          <strong>${p.title}</strong> <span class="muted">(${p.year})</span><br/>
+          <strong>${p.title}</strong> <span class="muted">(${p.year || ''})</span><br/>
           ${p.authors} · ${p.venue}
           <div class="badges">
-            <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track}</span>
+            <span class="badge">${trackLabel[String(p.track).toLowerCase()] || p.track || ''}</span>
             ${p.role ? `<span class="badge role ${p.role}">${roleLabel[p.role] || p.role}</span>` : ''}
           </div>
-          <div style="margin-top:6px">
-            ${p.links && p.links.pdf ? `<a href="${p.links.pdf}" target="_blank" rel="noopener">PDF</a>` : ''}
-            ${p.links && p.links.repo ? ` · <a href="${p.links.repo}" target="_blank" rel="noopener">repo</a>` : ''}
-            ${p.links && p.links.arXiv ? ` · <a href="${p.links.project}" target="_blank" rel="noopener">arXiv</a>` : ''}
-            ${p.links && p.links.benchmark ? ` · <a href="${p.links.benchmark}" target="_blank" rel="noopener">benchmark</a>` : ''}
-            ${p.links && p.links.other ? ` · <a href="${p.links.other}" target="_blank" rel="noopener">link</a>` : ''}
-          </div>
+          ${linkLine(p.links)}
         </div>
       `).join('')
       : `<div class="muted">No entries under <b>${trackLabel[key] || key}</b> yet.</div>`;
   }
 
+  // initial render + filter buttons
   render();
   document.querySelectorAll('#allpubs [data-filter]').forEach(btn => {
     btn.addEventListener('click', () => render(btn.dataset.filter));
   });
 </script>
+
 </section>
 
 <section id="about">
