@@ -29,7 +29,7 @@
         <!-- Entry bib key -->
         <div id="{{entry.key}}" class="col-sm-8">
         <!-- Title -->
-        <div class="title">{{entry.title}}</div>
+        <div class="title" style="font-style: italic; text-decoration: underline;">{{entry.title}}</div>
         <!-- Author -->
         <div class="author">
         {% assign author_array_size = entry.author_array | size %}
@@ -62,7 +62,7 @@
             {%- if forloop.last and author_array_limit == author_array_size -%}and&nbsp;{%- endif -%}
           {%- endif -%}
           {%- if author_is_self -%}
-            <em>{{author.first}} {{author.last}}</em>
+            <strong>{{author.first}} {{author.last}}</strong>
           {%- else -%}
             {%- if coauthor_url -%}
               <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
@@ -183,6 +183,9 @@
           {%- endif %}
           {%- if entry.website %}
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+          {%- endif %}
+          {%- if entry.youtube %}
+            <a href="{{ entry.youtube }}" class="btn btn-sm z-depth-0" role="button">YouTube</a>
           {%- endif %}
           </div>
           {% if site.badges %}

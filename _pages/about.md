@@ -2,25 +2,38 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Research Fellow in <a href='https://lichtmanlab.fas.harvard.edu/'>Lichtman Lab</a> at Harvard University
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: photo.jpg
   image_circular: false # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>fumingyang@fas.harvard.edu</p>
+    <p>Cambridge, MA 02138</p>
 
 news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Hi! I'm **Fuming (Felix) Yang**, a Research Fellow in the [Lichtman Lab](https://lichtmanlab.fas.harvard.edu/) at Harvard University.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+## Research Interests
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My research interests center on using **AI/ML methods to build high-throughput imaging pipelines** and on understanding how to extract **biological insights from large brain datasets**, while letting those insights, in turn, **inform advances in AI/ML**.
+
+## Current Work
+
+I'm currently leading data-acquisition efforts at an electron microscopy facility at Harvard as part of **High-throughput Integrative Mouse Connectomics (HI-MC)** project, a collaboration across **Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University**. We're aiming to reconstruct **10 mm³** of adult mouse cortex at nanometer resolution (~20PB). I build, operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a **91-beam** scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.
+
+
+
+## Research Areas
+
+- **Computer Vision & ML**: Graph theory, image compression, neural network architecture
+- **Neuroscience**: Connectomics, developmental neuroscience, synaptic organization
+- **Software & Tools**: High-throughput imaging pipelines, automated QC workflows
+
+> *"Shoot for the moon. Even if you miss, you land among stars"*

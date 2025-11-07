@@ -1,12 +1,9 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - FumingYang-Felix
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - FumingYang-Felix/WaferTools
+  - FumingYang-Felix/Sparse-Graph-Reconstruction-and-Seriation-for-Large-Scale-Image-Stacks
+  - FumingYang-Felix/VQ-VAE-EM-Image-Compression-Generation
+  - FumingYang-Felix/Budgeted-Broadcast-Network-BBNet
+  - FumingYang-Felix/CMU-Brain-Computer-Interface
