@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-🎉 *<u>Developmental Connectomics of the Mouse Cerebellum</u>* submitted to **Nature**!
+🎉 *<u>Developmental Connectomics of the Mouse Cerebellum</u>* is submitting to **Nature**!
 
