@@ -32,8 +32,8 @@ I'm currently leading data-acquisition efforts at an electron microscopy facilit
 
 ## Research Areas
 
-- **Computer Vision & ML**: Graph theory, image compression, neural network architecture
-- **Neuroscience**: Connectomics, developmental neuroscience, synaptic organization
-- **Software & Tools**: High-throughput imaging pipelines, automated QC workflows
+- **Computer Vision & ML**: Graph theory, image compression, 2D/3D reconstruction, neural network architecture
+- **Neuroscience**: Connectomics, developmental neuroscience, synapses elimination
+- **Software & Tools**: High-throughput imaging pipelines, automated acqusition/QC workflows
 
 > *"Shoot for the moon. Even if you miss, you land among stars"*
