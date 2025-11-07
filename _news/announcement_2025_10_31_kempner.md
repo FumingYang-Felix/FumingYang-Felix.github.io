@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-🏆 **Kempner Institute Accelerator Award** (for novel AI/ML methods) from **Harvard University**! Grateful for the support!
+🏆 Our paper (Budgeted Broadcast: An Activity-Dependent Pruning Rule for Neural Network Efficiency) has been nominated by Harvard University for the **Kempner Institute Accelerator Award** recognizing novel AI/ML methods, grateful to all collaborators!
 
