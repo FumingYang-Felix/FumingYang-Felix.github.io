@@ -32,7 +32,7 @@ I'm currently leading data-acquisition efforts at an electron microscopy facilit
 
 ## Research Areas
 
-- **Computer Vision & ML**: Graph theory, image compression, 2D/3D reconstruction, neural network architecture
+- **Computer Vision & ML**: Graph theory, image compression, 2D/3D reconstruction, NN architecture
 - **Neuroscience**: Connectomics, developmental neuroscience, synapses elimination
 - **Software & Tools**: High-throughput imaging pipelines, automated acqusition/QC workflows
 
