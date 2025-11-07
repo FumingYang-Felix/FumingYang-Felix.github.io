@@ -22,11 +22,11 @@ Hi! I'm **Fuming (Felix) Yang**, a Research Fellow in the [Lichtman Lab](https:/
 
 ## Research Interests
 
-My research interests center on using **AI/ML methods to build high-throughput imaging pipelines** and on understanding how to extract **biological insights from large brain datasets**, while letting those insights, in turn, **inform advances in AI/ML**.
+My research interests center on using AI/ML methods to build high-throughput imaging pipelines and on understanding how to extract biological insights from large brain datasets, while letting those insights, in turn, inform advances in AI/ML.
 
 ## Current Work
 
-I'm currently leading data-acquisition efforts at an electron microscopy facility at Harvard as part of **High-throughput Integrative Mouse Connectomics (HI-MC)** project, a collaboration across **Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University**. We're aiming to reconstruct **10 mm³** of adult mouse cortex at nanometer resolution (~20PB). I build, operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a **91-beam** scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.
+I'm currently leading data-acquisition efforts at an electron microscopy facility at Harvard as part of High-throughput Integrative Mouse Connectomics (HI-MC) project, a collaboration across Harvard, Princeton, Google, MIT, the Allen Institute, Cambridge University, and Johns Hopkins University. We're aiming to reconstruct 10 mm³ of adult mouse cortex at nanometer resolution (~20PB). I build, operate and optimize the imaging pipeline, develop high-throughput quality-control workflows, and perform downstream analysis. The pipeline combines a custom tissue mill with a 91-beam scanning electron microscope (Zeiss MultiSEM) for automated, record-speed imaging of large neural volumes.
 
 
 
