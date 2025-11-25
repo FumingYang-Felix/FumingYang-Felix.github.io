@@ -5,5 +5,5 @@ inline: true
 related_posts: false
 ---
 
-🎉 *<u>WaferTools: wafer-to-volume electron microscopy pipeline</u>* submitted to **ISBI 2026**! 
+🎉 *<u>WaferTools - Software for Wafer-related Automatic Methods in Connectomics.</u>* submitted to **ISBI 2026**! 
 
