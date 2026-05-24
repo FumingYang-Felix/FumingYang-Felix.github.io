@@ -1,0 +1,9 @@
+# version snapshots
+index-v*.html
+
+# image sources (kept local, not deployed)
+*.heic
+*.HEIC
+
+# system
+.DS_Store

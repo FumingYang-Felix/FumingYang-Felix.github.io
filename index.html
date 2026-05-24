@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fuming Yang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --bg: #f5f4ee;
+    --bg-elev: #efece2;
+    --ink: #1a1a19;
+    --ink-soft: #3a3a36;
+    --muted: #8a8678;
+    --muted-soft: #a8a596;
+    --hair: #ddd8c9;
+    --hair-strong: #c8c2b0;
+    --accent: #c25b3f;
+    --accent-deep: #9c4128;
+    --accent-soft: #e8c8bd;
+    --serif: "Newsreader", Iowan Old Style, Apple Garamond, Baskerville, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ─── grid ─────────────────────────────────────────────────────── */
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 36px 110px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    column-gap: 48px;
+    align-items: start;
+  }
+  .main { min-width: 0; max-width: 660px; }
+  .rail {
+    position: sticky;
+    top: 56px;
+    align-self: start;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+  }
+  .rail .block { margin-bottom: 40px; }
+  .rail .block:first-child { margin-top: 6px; }
+  .rail .tag {
+    display: block;
+    color: var(--muted-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+  .rail .line { color: var(--ink-soft); margin-bottom: 4px; }
+  .rail .arrow { color: var(--accent); margin-right: 4px; }
+  .rail .dim { color: var(--muted-soft); }
+  .rail a { color: var(--ink-soft); border-bottom: 1px solid var(--hair-strong); }
+  .rail a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ─── masthead ─────────────────────────────────────────────────── */
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 44px;
+  }
+  .masthead-l { min-width: 0; }
+  .masthead .name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .masthead .role { font-size: 15px; color: var(--ink-soft); margin: 0 0 8px; line-height: 1.55; }
+  .masthead .role .sep { display: inline-block; width: 14px; text-align: center; color: var(--hair-strong); }
+  .masthead .contact { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 6px 0 0; letter-spacing: 0.01em; }
+  .masthead .contact a { color: var(--muted); border-bottom: 1px solid var(--hair-strong); }
+  .masthead .contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ─── two-brains monogram ──────────────────────────────────────── */
+  .mark {
+    width: 96px;
+    height: 96px;
+    border: 1px solid var(--hair-strong);
+    border-radius: 50%;
+    background: var(--bg-elev);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    user-select: none;
+    overflow: hidden;
+  }
+  .mark:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(194,91,63,0.12); }
+  .mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mark.firing { animation: bifurcate 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  @keyframes bifurcate {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.09); box-shadow: 0 8px 28px rgba(194,91,63,0.32); }
+    70%  { transform: scale(0.97); }
+    100% { transform: scale(1); }
+  }
+  @keyframes nodePulse {
+    0%, 100% { fill-opacity: 1; }
+    50% { fill-opacity: 0.55; }
+  }
+
+  /* ─── prose ────────────────────────────────────────────────────── */
+  p { margin: 0 0 16px; }
+  p strong { font-weight: 600; color: var(--ink); }
+  p em { font-style: italic; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(194, 91, 63, 0.35);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  a:hover { color: var(--accent-deep); border-bottom-color: var(--accent-deep); }
+  .intro p { font-size: 16.5px; line-height: 1.65; color: var(--ink); }
+  .intro .twobrains-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+    background: rgba(194, 91, 63, 0.08);
+    padding: 1px 7px 2px;
+    border-radius: 3px;
+    letter-spacing: 0.01em;
+  }
+  .intro .focus {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ─── section heading ─────────────────────────────────────────── */
+  h2.section-title {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 56px 0 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  /* ─── work list ───────────────────────────────────────────────── */
+  .work-label {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 32px 0 18px;
+  }
+  .work-label.first { margin-top: 4px; }
+  .work-item { display: grid; grid-template-columns: 60px 1fr; gap: 16px; margin: 0 0 22px; }
+  .work-thumb {
+    width: 60px; height: 60px; background: var(--bg-elev);
+    border: 1px solid var(--hair); border-radius: 5px;
+    display: flex; align-items: center; justify-content: center; padding: 5px;
+  }
+  .work-thumb svg { width: 100%; height: 100%; }
+  .work-body { min-width: 0; }
+  .work-item .title { font-family: var(--serif); font-size: 17.5px; line-height: 1.32; font-weight: 500; color: var(--ink); margin: 0 0 4px; }
+  .work-item .title a { color: var(--ink); border-bottom: none; }
+  .work-item .title a:hover { color: var(--accent); }
+  .work-item .meta { font-family: var(--mono); font-size: 11px; color: var(--muted); margin: 0 0 7px; letter-spacing: 0.01em; }
+  .work-item .meta .venue { color: var(--accent); }
+  .work-item .meta .dot { color: var(--hair-strong); padding: 0 5px; }
+  .work-item .blurb { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 5px; }
+  .work-item .links { font-family: var(--mono); font-size: 11px; color: var(--muted); margin: 3px 0 0; }
+  .work-item .links a { border-bottom: none; color: var(--muted); }
+  .work-item .links a:hover { color: var(--accent); }
+  .work-item .links .pipe { color: var(--hair-strong); padding: 0 6px; }
+  .more { font-family: var(--mono); font-size: 12px; margin: 14px 0 0; padding-left: 76px; color: var(--muted); }
+  .more a { color: var(--accent); border-bottom: none; }
+  .more a:hover { border-bottom: 1px solid var(--accent); }
+
+  /* ─── footer ──────────────────────────────────────────────────── */
+  footer { margin-top: 64px; padding-top: 22px; border-top: 1px solid var(--hair); font-size: 13px; color: var(--ink-soft); line-height: 1.75; }
+  footer .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: inline-block; width: 72px; }
+  footer a { color: var(--ink); border-bottom: 1px solid var(--hair-strong); }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .colophon { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 22px; letter-spacing: 0.02em; }
+  .hint {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted-soft);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+  }
+  .hint kbd {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--hair-strong);
+    border-bottom-width: 2px;
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: var(--ink-soft);
+  }
+
+  /* ─── puzzle modal ────────────────────────────────────────────── */
+  .puzzle-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(26, 26, 25, 0.42);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
+  }
+  .puzzle-backdrop.open { display: flex; }
+  .puzzle {
+    background: var(--bg);
+    border: 1px solid var(--hair-strong);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 28px 30px 24px;
+    max-width: 460px;
+    width: calc(100% - 40px);
+    box-shadow: 0 24px 60px rgba(26,26,25,0.18);
+    font-family: var(--sans);
+  }
+  .puzzle-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .puzzle-q {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .puzzle-a {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--hair);
+    display: none;
+  }
+  .puzzle-a.show { display: block; }
+  .puzzle-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .puzzle-btn {
+    background: transparent;
+    border: 1px solid var(--hair-strong);
+    color: var(--ink-soft);
+    padding: 5px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: 0.04em;
+  }
+  .puzzle-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .puzzle-btn.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .puzzle-btn.primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--bg); }
+  .puzzle-close { margin-left: auto; color: var(--muted-soft); border: none; padding: 5px 8px; background: transparent; cursor: pointer; font-family: var(--mono); }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .wrap { grid-template-columns: 1fr; column-gap: 0; }
+    .rail { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--hair); }
+    .rail .block { margin-bottom: 16px; }
+  }
+  @media (max-width: 620px) {
+    .wrap { padding: 40px 22px 80px; }
+    .masthead { grid-template-columns: 1fr; }
+    .mark { width: 64px; height: 64px; }
+    .masthead .name { font-size: 30px; }
+    .work-item { grid-template-columns: 50px 1fr; gap: 14px; }
+    .work-thumb { width: 50px; height: 50px; }
+    .more { padding-left: 64px; }
+    footer .label { display: block; width: auto; margin-bottom: 2px; }
+    .rail { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <main class="main">
+
+    <!-- ========================== MASTHEAD ============================ -->
+    <header class="masthead">
+      <div class="masthead-l">
+        <h1 class="name">Fuming Yang</h1>
+        <p class="role">
+          Research Fellow at <a href="https://lichtmanlab.fas.harvard.edu/">Harvard</a>
+          <span class="sep">·</span>
+          Incoming PhD student at MIT
+        </p>
+        <p class="contact">
+          <a href="mailto:fumingy@mit.edu">fumingy@mit.edu</a>
+          &nbsp;&nbsp;
+          <a href="https://github.com/FumingYang-Felix">github</a>
+          &nbsp;&nbsp;
+          <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ">scholar</a>
+          &nbsp;&nbsp;
+          <a href="#">cv</a>
+        </p>
+      </div>
+      <div class="mark" id="mark" aria-label="Fuming Yang" title="">
+        <img src="portrait.jpg" alt="Fuming Yang" />
+      </div>
+    </header>
+
+    <!-- ========================== INTRO =============================== -->
+    <section class="intro">
+      <p>
+        I study <span class="twobrains-tag">two brains</span> in parallel — the artificial
+        and the biological. On the artificial side, I work on <span class="focus">representation
+        geometry</span> and <span class="focus">training dynamics</span> in AI; on the biological
+        side, I'm leading data-acquisition technologies for the whole mammalian brain
+        connectomics project at Harvard. I'll be starting my PhD at MIT in Fall 2026.
+        Most of my recent work develops new technologies for studying both.
+      </p>
+    </section>
+
+    <!-- ========================== WORK ================================ -->
+    <h2 class="section-title">Selected papers</h2>
+
+    <div class="work-label first">Science of AI</div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="32" x2="32" y2="32" stroke="#1a1a19" stroke-width="1.6"/>
+          <path d="M32 32 Q 44 32 56 16" stroke="#c25b3f" stroke-width="1.6" fill="none"/>
+          <path d="M32 32 Q 44 32 56 48" stroke="#c25b3f" stroke-width="1.6" fill="none"/>
+          <line x1="32" y1="32" x2="56" y2="32" stroke="#c8c2b0" stroke-width="1" stroke-dasharray="2.5 2.5"/>
+          <circle class="anim-crit" cx="32" cy="32" r="3.2" fill="#c25b3f"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://fumingyang-felix.github.io/feature-lottery-demo/">Feature Lottery? A Bifurcation Theory of Concept Emergence</a>
+        </div>
+        <div class="meta">
+          Fuming Yang
+          <span class="dot">·</span>
+          <span class="venue">arXiv preprint</span>
+          <span class="dot">·</span>
+          2026
+        </div>
+        <div class="blurb">
+          A label-free phase coordinate β(t)/β<sub>c</sub>(t) for representation dynamics,
+          derived from a passive GMM probe and verified across SAEs on Pythia, SSL on
+          CIFAR-10/100, and grokking on modular arithmetic.
+        </div>
+        <div class="links">
+          <a href="#">arxiv</a><span class="pipe">|</span>
+          <a href="https://fumingyang-felix.github.io/feature-lottery-demo/">demo</a><span class="pipe">|</span>
+          <a href="#">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <text x="32" y="10" font-family="JetBrains Mono" font-size="7" font-weight="500" fill="#c25b3f" text-anchor="middle">5%</text>
+          <g>
+            <circle cx="14" cy="20" r="1.6" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="22" cy="20" r="1.6" fill="#c25b3f"/>
+            <circle cx="30" cy="20" r="1.6" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="38" cy="20" r="1.6" fill="#c25b3f"/>
+            <circle cx="46" cy="20" r="1.6" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="54" cy="20" r="1.6" fill="#c25b3f"/>
+          </g>
+          <g stroke="#c25b3f" stroke-width="0.6" stroke-dasharray="2 2">
+            <line class="anim-dash" x1="22" y1="22" x2="22" y2="42"/>
+            <line class="anim-dash" x1="38" y1="22" x2="38" y2="42"/>
+            <line class="anim-dash" x1="54" y1="22" x2="54" y2="42"/>
+          </g>
+          <g>
+            <circle cx="14" cy="44" r="2.4" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="22" cy="44" r="2.4" fill="#c25b3f"/>
+            <circle cx="30" cy="44" r="2.4" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="38" cy="44" r="2.4" fill="#c25b3f"/>
+            <circle cx="46" cy="44" r="2.4" fill="#c8c2b0"/>
+            <circle class="anim-win" cx="54" cy="44" r="2.4" fill="#c25b3f"/>
+          </g>
+          <text x="32" y="58" font-family="JetBrains Mono" font-size="6" fill="#8a8678" text-anchor="middle">trained</text>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="#">The 5% SAE Feature Lottery: Scale-Invariant Early-Stop, Layer-Dependent Refinement</a>
+        </div>
+        <div class="meta">
+          Fuming Yang
+          <span class="dot">·</span>
+          <span class="venue">arXiv preprint</span>
+          <span class="dot">·</span>
+          2026
+        </div>
+        <div class="blurb">
+          Stop SAE training at 5% on early-to-mid LM layers and recover ≥&nbsp;96% per-atom
+          POS purity at 20×&nbsp;less compute. Five-seed evaluation across Pythia-160M /
+          410M / 1.4B; degrades with layer depth (99% at L6, 88% at L18).
+        </div>
+        <div class="links">
+          <a href="#">arxiv</a><span class="pipe">|</span>
+          <a href="#">checkpoints</a><span class="pipe">|</span>
+          <a href="#">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#1a1a19" stroke-width="1" fill="none" stroke-linecap="round">
+            <line class="anim-pruneA" style="animation-delay: 0s"    x1="12" y1="16" x2="32" y2="22"/>
+            <line                                                    x1="12" y1="16" x2="32" y2="42"/>
+            <line class="anim-pruneB" style="animation-delay: 0.6s"  x1="12" y1="32" x2="32" y2="22"/>
+            <line                                                    x1="12" y1="32" x2="32" y2="42"/>
+            <line class="anim-pruneA" style="animation-delay: 1.2s"  x1="12" y1="48" x2="32" y2="22"/>
+            <line                                                    x1="12" y1="48" x2="32" y2="42"/>
+            <line x1="32" y1="22" x2="52" y2="32"/>
+            <line x1="32" y1="42" x2="52" y2="32"/>
+          </g>
+          <g fill="#1a1a19">
+            <circle cx="12" cy="16" r="2"/>
+            <circle cx="12" cy="32" r="2"/>
+            <circle cx="12" cy="48" r="2"/>
+            <circle cx="32" cy="22" r="2"/>
+            <circle cx="32" cy="42" r="2"/>
+          </g>
+          <circle cx="52" cy="32" r="2.6" fill="#c25b3f"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://arxiv.org/abs/2510.01263">Budgeted Broadcast: An Activity-Dependent Pruning Rule for Neural Network Efficiency</a>
+        </div>
+        <div class="meta">
+          Y. Meirovitch*, F. Yang*, J. W. Lichtman, N. Shavit
+          <span class="dot">·</span>
+          <span class="venue">arXiv preprint</span>
+          <span class="dot">·</span>
+          2025
+        </div>
+        <div class="blurb">
+          An activity-dependent rule that prunes weights during training under a fixed
+          broadcast budget. *Equal contribution.
+        </div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2510.01263">arxiv</a><span class="pipe">|</span>
+          <a href="https://github.com/FumingYang-Felix/Budgeted-Broadcast-Network-BBNet">code</a><span class="pipe">|</span>
+          <a href="https://www.youtube.com/watch?v=xhxaWfZQG6c">video</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-label">AI for Science</div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#1a1a19" stroke-width="0.5" fill="none">
+            <line x1="6" y1="16" x2="10" y2="24"/>
+            <line x1="10" y1="24" x2="16" y2="20"/>
+            <line x1="10" y1="24" x2="8" y2="36"/>
+            <line x1="8" y1="36" x2="14" y2="44"/>
+            <line x1="14" y1="44" x2="18" y2="34"/>
+            <line x1="16" y1="20" x2="18" y2="34"/>
+          </g>
+          <g fill="#1a1a19">
+            <circle cx="6" cy="16" r="1.2"/>
+            <circle cx="10" cy="24" r="1.2"/>
+            <circle cx="16" cy="20" r="1.2"/>
+            <circle cx="8" cy="36" r="1.2"/>
+            <circle cx="14" cy="44" r="1.2"/>
+            <circle cx="18" cy="34" r="1.2"/>
+          </g>
+          <path d="M22 32 L 28 32 M 26 30 L 28 32 L 26 34" stroke="#c8c2b0" stroke-width="0.7" fill="none"/>
+          <rect x="30" y="14" width="12" height="3.5" rx="1.75" fill="#1a1a19"/>
+          <rect x="32" y="29" width="8" height="3.5" rx="1.75" fill="#1a1a19"/>
+          <rect x="30" y="44" width="12" height="3.5" rx="1.75" fill="#1a1a19"/>
+          <path d="M44 32 L 50 32 M 48 30 L 50 32 L 48 34" stroke="#c8c2b0" stroke-width="0.7" fill="none"/>
+          <line x1="55" y1="12" x2="55" y2="52" stroke="#c25b3f" stroke-width="1.2" stroke-opacity="0.35"/>
+          <g fill="#c25b3f">
+            <circle class="anim-chain" style="animation-delay: 0s"    cx="55" cy="12" r="1.5"/>
+            <circle class="anim-chain" style="animation-delay: 0.2s"  cx="55" cy="22" r="1.5"/>
+            <circle class="anim-chain" style="animation-delay: 0.4s"  cx="55" cy="32" r="1.5"/>
+            <circle class="anim-chain" style="animation-delay: 0.6s"  cx="55" cy="42" r="1.5"/>
+            <circle class="anim-chain" style="animation-delay: 0.8s"  cx="55" cy="52" r="1.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://arxiv.org/abs/2509.23084">Sparse Graph Reconstruction and Seriation for Large-Scale Image Stacks</a>
+        </div>
+        <div class="meta">
+          F. Yang, Y. Meirovitch, J. W. Lichtman
+          <span class="dot">·</span>
+          <span class="venue">arXiv preprint</span>
+          <span class="dot">·</span>
+          2025
+        </div>
+        <div class="blurb">
+          Recovers a global ordering of tens of thousands of EM sections from sparse
+          pairwise alignments via graph condensation and super-chains.
+        </div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2509.23084">arxiv</a><span class="pipe">|</span>
+          <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation">code</a><span class="pipe">|</span>
+          <a href="https://github.com/FumingYang-Felix/Graph-Condensation-Densification-and-SuperChain-for-1D-Seriation/releases/tag/Benchmark">benchmark</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#1a1a19" stroke-width="0.9" fill="none">
+            <rect x="6" y="14" width="22" height="22"/>
+            <line x1="11.5" y1="14" x2="11.5" y2="36"/>
+            <line x1="17" y1="14" x2="17" y2="36"/>
+            <line x1="22.5" y1="14" x2="22.5" y2="36"/>
+            <line x1="6" y1="19.5" x2="28" y2="19.5"/>
+            <line x1="6" y1="25" x2="28" y2="25"/>
+            <line x1="6" y1="30.5" x2="28" y2="30.5"/>
+          </g>
+          <path d="M32 25 L 44 25 M 40 21 L 44 25 L 40 29" stroke="#c25b3f" stroke-width="1.4" fill="none"/>
+          <rect x="48" y="20" width="10" height="10" fill="#c25b3f"/>
+          <circle class="anim-vq" r="1.4" fill="#c25b3f" cx="30" cy="25"/>
+          <text x="17" y="50" font-family="JetBrains Mono" font-size="8" fill="#8a8678" text-anchor="middle">1000×</text>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://arxiv.org/abs/2511.00231">Towards 1000-fold EM Image Compression for Connectomics via VQ-VAE with Transformer Prior</a>
+        </div>
+        <div class="meta">
+          F. Yang, Y. Li, H. Pfister, J. W. Lichtman, Y. Meirovitch
+          <span class="dot">·</span>
+          <span class="venue">ISBI 2025</span>
+        </div>
+        <div class="blurb">
+          VQ-VAE with a transformer prior reaches ~1000× compression on nanoscale EM
+          volumes while preserving downstream segmentation accuracy.
+        </div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2511.00231">arxiv</a><span class="pipe">|</span>
+          <a href="https://github.com/FumingYang-Felix/VQ-VAE-EM-Image-Compression-Generation">code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="10" r="3.5" fill="#1a1a19"/>
+          <line x1="32" y1="13.5" x2="32" y2="26" stroke="#1a1a19" stroke-width="1.4"/>
+          <path d="M32 26 Q 22 30 22 38" stroke="#1a1a19" stroke-width="1.2" fill="none"/>
+          <path d="M32 26 Q 42 30 42 38" stroke="#1a1a19" stroke-width="1.2" fill="none"/>
+          <circle cx="22" cy="40" r="2.5" fill="#c25b3f"/>
+          <circle cx="42" cy="40" r="2.5" fill="#c25b3f"/>
+          <rect x="6" y="46" width="52" height="10" rx="2" fill="rgba(194,91,63,0.10)" stroke="#1a1a19" stroke-width="0.8"/>
+          <g stroke="#1a1a19" stroke-width="0.35" stroke-opacity="0.7">
+            <line x1="12" y1="46" x2="12" y2="56"/>
+            <line x1="18" y1="46" x2="18" y2="56"/>
+            <line x1="26" y1="46" x2="26" y2="56"/>
+            <line x1="32" y1="46" x2="32" y2="56"/>
+            <line x1="38" y1="46" x2="38" y2="56"/>
+            <line x1="46" y1="46" x2="46" y2="56"/>
+            <line x1="52" y1="46" x2="52" y2="56"/>
+          </g>
+          <line x1="22" y1="42.5" x2="22" y2="46" stroke="#c25b3f" stroke-width="1"/>
+          <line x1="42" y1="42.5" x2="42" y2="46" stroke="#c25b3f" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://doi.org/10.1101/2021.09.20.460480">Neuromuscular connectomes across development reveal synaptic ordering rules</a>
+        </div>
+        <div class="meta">
+          Y. Meirovitch et&nbsp;al., incl. F. Yang
+          <span class="dot">·</span>
+          <span class="venue">Nature Neuroscience</span>
+          <span class="dot">·</span>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 38 Q 32 8 54 38" stroke="#1a1a19" stroke-width="1.4" fill="none"/>
+          <path d="M10 38 Q 32 28 54 38" stroke="#c25b3f" stroke-width="1.2" fill="none"/>
+          <path d="M16 46 L 16 54 M 24 50 L 24 56 M 32 52 L 32 58 M 40 50 L 40 56 M 48 46 L 48 54" stroke="#1a1a19" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://www.biorxiv.org/content/10.1101/2025.09.15.676403v1">Developmental Connectomics of the Mouse Cerebellum</a>
+        </div>
+        <div class="meta">
+          N. Dhanyasi et&nbsp;al., incl. F. Yang
+          <span class="dot">·</span>
+          <span class="venue">bioRxiv</span>
+          <span class="dot">·</span>
+          Nature (in submission)
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#1a1a19" stroke-width="0.9" fill="none">
+            <rect x="14" y="14" width="36" height="3"/>
+            <rect x="14" y="20" width="36" height="3"/>
+            <rect x="14" y="26" width="36" height="3"/>
+            <rect x="14" y="32" width="36" height="3"/>
+            <rect x="14" y="38" width="36" height="3"/>
+          </g>
+          <rect x="14" y="26" width="36" height="3" fill="none" stroke="#c25b3f" stroke-width="1.4"/>
+          <path d="M52 27.5 L 60 27.5 M 56 24 L 60 27.5 L 56 31" stroke="#c25b3f" stroke-width="1.4" fill="none"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="#">DRIFT-EM Enables Direct Wafer Retrieval of Ultrathin Serial Sections for Large-Volume Electron Microscopy</a>
+        </div>
+        <div class="meta">
+          N. Medina, J. V. Gogola, K. Boergens, F. Yang, et&nbsp;al.
+          <span class="dot">·</span>
+          <span class="venue">Cell Reports Methods</span>
+          <span class="dot">·</span>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#c25b3f" stroke-width="1" fill="none">
+            <line x1="14" y1="50" x2="32" y2="36"/>
+            <line x1="22" y1="54" x2="32" y2="36"/>
+            <line x1="32" y1="56" x2="32" y2="36"/>
+            <line x1="42" y1="54" x2="32" y2="36"/>
+            <line x1="50" y1="50" x2="32" y2="36"/>
+          </g>
+          <line x1="32" y1="36" x2="32" y2="12" stroke="#1a1a19" stroke-width="1.4"/>
+          <circle cx="32" cy="36" r="3" fill="#1a1a19"/>
+          <g fill="#c25b3f">
+            <circle cx="14" cy="50" r="1.2"/>
+            <circle cx="22" cy="54" r="1.2"/>
+            <circle cx="32" cy="56" r="1.2"/>
+            <circle cx="42" cy="54" r="1.2"/>
+            <circle cx="50" cy="50" r="1.2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://elifesciences.org/reviewed-preprints/105973v1">Cellular and Synaptic Organization of the Octopus Vertical Lobe</a>
+        </div>
+        <div class="meta">
+          F. Bidel, Y. Meirovitch, F. Yang, J. W. Lichtman, B. Hochner
+          <span class="dot">·</span>
+          <span class="venue">eLife</span>
+          <span class="dot">·</span>
+          2025
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="8" width="48" height="48" fill="none" stroke="#1a1a19" stroke-width="1"/>
+          <circle cx="22" cy="22" r="10" fill="rgba(194,91,63,0.18)" stroke="#c25b3f" stroke-width="0.8"/>
+          <circle cx="42" cy="38" r="12" fill="rgba(26,26,25,0.10)" stroke="#1a1a19" stroke-width="0.8"/>
+          <circle cx="28" cy="46" r="7" fill="rgba(26,26,25,0.14)" stroke="#1a1a19" stroke-width="0.6"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://www.frontiersin.org/journals/neural-circuits/articles/10.3389/fncir.2023.952921/full">mEMbrain: An Interactive Deep Learning MATLAB Tool for Connectomic Segmentation on Commodity Desktops</a>
+        </div>
+        <div class="meta">
+          E. C. Pavarino et&nbsp;al., incl. F. Yang
+          <span class="dot">·</span>
+          <span class="venue">Frontiers in Neural Circuits</span>
+          <span class="dot">·</span>
+          2023
+        </div>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#1a1a19" stroke-width="1" fill="none">
+            <line x1="20" y1="18" x2="32" y2="32"/>
+            <line x1="44" y1="18" x2="32" y2="32"/>
+            <line x1="20" y1="46" x2="32" y2="32"/>
+            <line x1="44" y1="46" x2="32" y2="32"/>
+            <line x1="20" y1="18" x2="44" y2="18"/>
+            <line x1="20" y1="46" x2="44" y2="46"/>
+          </g>
+          <g fill="#1a1a19">
+            <circle cx="20" cy="18" r="2.2"/>
+            <circle cx="44" cy="18" r="2.2"/>
+            <circle cx="20" cy="46" r="2.2"/>
+            <circle cx="44" cy="46" r="2.2"/>
+          </g>
+          <circle cx="32" cy="32" r="3" fill="#c25b3f"/>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://elifesciences.org/articles/84257">Connectomics of the Octopus vulgaris Vertical Lobe: Conserved and Novel Principles of a Memory Acquisition Network</a>
+        </div>
+        <div class="meta">
+          F. Bidel et&nbsp;al., incl. F. Yang
+          <span class="dot">·</span>
+          <span class="venue">eLife</span>
+          <span class="dot">·</span>
+          2023
+        </div>
+      </div>
+    </div>
+
+    <div class="work-label">Other</div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <line x1="8" y1="44" x2="56" y2="44" stroke="#1a1a19" stroke-width="0.8"/>
+          <path d="M52 41 L 56 44 L 52 47" stroke="#1a1a19" stroke-width="0.8" fill="none"/>
+          <circle cx="14" cy="44" r="2" fill="#1a1a19"/>
+          <circle cx="32" cy="44" r="2" fill="#1a1a19"/>
+          <circle cx="50" cy="44" r="2" fill="#c25b3f"/>
+          <g>
+            <rect x="8" y="14" width="14" height="10" rx="2" fill="none" stroke="#1a1a19" stroke-width="0.7"/>
+            <line x1="11" y1="18" x2="19" y2="18" stroke="#1a1a19" stroke-width="0.4"/>
+            <line x1="11" y1="21" x2="17" y2="21" stroke="#1a1a19" stroke-width="0.4"/>
+            <path d="M12 24 L 14 28 L 14 24" fill="#1a1a19" stroke="#1a1a19" stroke-width="0.4"/>
+          </g>
+          <g>
+            <rect x="42" y="14" width="14" height="10" rx="2" fill="none" stroke="#c25b3f" stroke-width="0.7"/>
+            <line x1="45" y1="18" x2="53" y2="18" stroke="#c25b3f" stroke-width="0.4"/>
+            <line x1="45" y1="21" x2="51" y2="21" stroke="#c25b3f" stroke-width="0.4"/>
+            <path d="M46 24 L 48 28 L 48 24" fill="#c25b3f" stroke="#c25b3f" stroke-width="0.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://link.springer.com/article/10.1007/s10803-024-06675-x">The Narrative Coherence of Autistic Children's Accounts of an Experienced Event in Response to Different Interviewer Prompts: A Longitudinal Study</a>
+        </div>
+        <div class="meta">
+          S. Almeida, F. Yang, H. Zhang, M. E. Lamb
+          <span class="dot">·</span>
+          <span class="venue">Journal of Autism and Developmental Disorders</span>
+          <span class="dot">·</span>
+          2024
+        </div>
+      </div>
+    </div>
+
+    <div class="more">
+      <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ">All papers on Google Scholar →</a>
+    </div>
+
+    <!-- ========================== FOOTER ============================== -->
+    <footer>
+      <div><span class="label">Email</span>
+        <a href="mailto:fumingyang@fas.harvard.edu">fumingyang@fas.harvard.edu</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:fumingy@mit.edu">fumingy@mit.edu</a>
+      </div>
+      <div><span class="label">Code</span>
+        <a href="https://github.com/FumingYang-Felix">github.com/FumingYang-Felix</a>
+      </div>
+      <div><span class="label">Papers</span>
+        <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ">Google Scholar</a>
+        &nbsp;·&nbsp;
+        <a href="#">Semantic Scholar</a>
+      </div>
+
+      <div class="colophon">
+        Cambridge, MA &nbsp;·&nbsp; last updated 2026-05
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ============================ RIGHT RAIL =========================== -->
+  <aside class="rail">
+
+    <div class="block">
+      <div class="tag">at a glance</div>
+      <div class="line"><span class="arrow">↳</span>Cambridge, MA</div>
+      <div class="line"><span class="arrow">↳</span>Harvard <span class="dim">/</span> MIT</div>
+      <div class="line"><span class="arrow">↳</span>active since 2023</div>
+    </div>
+
+    <div class="block">
+      <div class="tag">two brains</div>
+      <div class="line"><span class="arrow">↳</span>artificial<br/>
+        <span class="dim">&nbsp;&nbsp;&nbsp;representation geometry,<br/>
+        &nbsp;&nbsp;&nbsp;training dynamics, CV</span>
+      </div>
+      <div class="line" style="margin-top:8px"><span class="arrow">↳</span>biological<br/>
+        <span class="dim">&nbsp;&nbsp;&nbsp;mammalian connectomes,<br/>
+        &nbsp;&nbsp;&nbsp;EM, graph theory</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="tag">current</div>
+      <div class="line">→ <a href="https://fumingyang-felix.github.io/feature-lottery-demo/">Feature Lottery</a></div>
+      <div class="line">→ <a href="#">5% SAE Lottery</a></div>
+      <div class="line">→ HI-MC mSEM pipeline</div>
+    </div>
+
+    <div class="block">
+      <div class="tag">elsewhere</div>
+      <div class="line">→ <a href="#">twitter</a></div>
+      <div class="line">→ <a href="https://scholar.google.com/citations?user=juDn15IAAAAJ">scholar</a></div>
+      <div class="line">→ <a href="#">cv (pdf)</a></div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- ============================ PUZZLE MODAL =========================== -->
+<div class="puzzle-backdrop" id="puzzleBackdrop">
+  <div class="puzzle" role="dialog" aria-modal="true">
+    <div class="puzzle-label">a small puzzle · <span id="puzzleIdx">1</span> / <span id="puzzleTotal">4</span></div>
+    <div class="puzzle-q" id="puzzleQ"></div>
+    <div class="puzzle-a" id="puzzleA"></div>
+    <div class="puzzle-controls">
+      <button class="puzzle-btn primary" id="puzzleReveal">reveal</button>
+      <button class="puzzle-btn" id="puzzleNext">next</button>
+      <button class="puzzle-close" id="puzzleClose" aria-label="close">esc</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ THUMBNAIL ANIMATIONS (JS, rAF) ============ -->
+<script>
+(function() {
+  const t0 = performance.now();
+  const anims = [];
+
+  // wave functions (period-normalized, p ∈ [0,1])
+  const pulse = (lo, hi) => p => lo + (hi - lo) * ((1 - Math.cos(p * Math.PI * 2)) / 2);
+  const linear = (from, to) => p => from + (to - from) * p;
+  const fadeHold = (fIn, fOut) => p => {
+    if (p < fIn) return p / fIn;
+    if (p < fOut) return 1;
+    return Math.max(0, 1 - (p - fOut) / (1 - fOut));
+  };
+
+  const addBatch = (els, attr, fn, period, phaseStep = 0) => {
+    els.forEach((el, i) => anims.push({ el, attr, fn, period, phase: i * phaseStep }));
+  };
+
+  // Feature Lottery — critical point pulse (radius + opacity)
+  addBatch(document.querySelectorAll('.anim-crit'), 'r', pulse(3.2, 4.8), 2.4);
+  addBatch(document.querySelectorAll('.anim-crit'), 'fill-opacity', pulse(1, 0.5), 2.4);
+
+  // 5% SAE winners — synchronous breathe
+  addBatch(document.querySelectorAll('.anim-win'), 'fill-opacity', pulse(0.55, 1), 2.4);
+
+  // 5% SAE dashed connectors — marching dashes
+  addBatch(document.querySelectorAll('.anim-dash'), 'stroke-dashoffset', linear(0, -8), 1.6);
+
+  // Sparse Graph chain — staggered light-up (top→bottom)
+  addBatch(document.querySelectorAll('.anim-chain'), 'fill-opacity', pulse(0.3, 1), 2.6, 0.2);
+
+  // Budgeted Broadcast prune — full + partial dim
+  document.querySelectorAll('.anim-pruneA').forEach(el => {
+    const delay = parseFloat(el.style.animationDelay) || 0;
+    anims.push({ el, attr: 'stroke-opacity', fn: pulse(1, 0.1), period: 4, phase: delay });
+  });
+  document.querySelectorAll('.anim-pruneB').forEach(el => {
+    const delay = parseFloat(el.style.animationDelay) || 0;
+    anims.push({ el, attr: 'stroke-opacity', fn: pulse(1, 0.4), period: 4, phase: delay });
+  });
+
+  // VQ-VAE — particle travels left grid → right coral block
+  addBatch(document.querySelectorAll('.anim-vq'), 'cx', linear(30, 52), 1.8);
+  addBatch(document.querySelectorAll('.anim-vq'), 'opacity', fadeHold(0.12, 0.82), 1.8);
+
+  function tick(now) {
+    const t = (now - t0) / 1000;
+    for (const a of anims) {
+      const localT = t - a.phase;
+      if (localT < 0) continue;
+      const p = (localT % a.period) / a.period;
+      a.el.setAttribute(a.attr, a.fn(p));
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+<!-- ============================ EASTER EGGS =========================== -->
+<script>
+  // ─── Egg B: page-load console message ─────────────────────────────────
+  console.log(
+    '%c\n' +
+    '                    ╱──\n' +
+    '                   ╱\n' +
+    '   ────●──●──●───●\n' +
+    '                   ╲\n' +
+    '                    ╲──\n' +
+    '                  ↑\n' +
+    '                β = β_c\n\n' +
+    '   two brains, one question.\n' +
+    '   ─────────────────────────────\n' +
+    '   when does a system commit to its function?\n\n' +
+    '   if you can write down a label-free signal\n' +
+    '   that distinguishes "feature found" from\n' +
+    '   "feature memorized," email me:\n\n' +
+    '       fumingyang@fas.harvard.edu\n',
+    'color:#c25b3f; font-family:ui-monospace,monospace; line-height:1.55; font-size:12px;'
+  );
+
+  // ─── Egg A: click monogram → bifurcate + log ─────────────────────────
+  const mark = document.getElementById('mark');
+  mark.addEventListener('click', () => {
+    mark.classList.remove('firing');
+    void mark.offsetWidth; // restart animation
+    mark.classList.add('firing');
+    console.log(
+      '%c β > β_c · symmetry broken · feature found ',
+      'color:#c25b3f; font-family:ui-monospace,monospace; font-weight:500; font-size:12px;'
+    );
+  });
+
+  // ─── Egg C: press '?' for a math/physics puzzle modal ────────────────
+  const puzzles = [
+    {
+      q: "A pitchfork bifurcation  ẋ = r x − x³.  How many stable equilibria for r > 0?",
+      a: "Two — at x = ±√r. The symmetric solution x = 0 loses stability at r = 0; the broken-symmetry branches are stable above the critical point."
+    },
+    {
+      q: "How many bits to address one neuron in the human brain (~10¹¹ neurons)?",
+      a: "log₂(10¹¹) ≈ 36.5 bits. For a synapse (~10¹⁴): ≈ 46.5 bits — i.e., less than the entropy of a 6-character password."
+    },
+    {
+      q: "Earnshaw's theorem: where can a system of point charges sit in stable static equilibrium in vacuum?",
+      a: "Nowhere. Since ∇²V = 0, the potential has no local minimum in free space — every equilibrium is a saddle. (This is why electrostatic levitation needs dynamics or feedback.)"
+    },
+    {
+      q: "An SAE pitchforks at β = β_c. The unstable subspace has dimension K − 1, not K. Why?",
+      a: "The symmetric mode (μ₁ = … = μ_K) is the eigenvector of the trivial direction; only the K − 1 anti-symmetric modes span the unstable subspace. The bifurcation is a collective choice over K − 1 axes."
+    }
+  ];
+  let pIdx = 0;
+  const backdrop = document.getElementById('puzzleBackdrop');
+  const qEl = document.getElementById('puzzleQ');
+  const aEl = document.getElementById('puzzleA');
+  const idxEl = document.getElementById('puzzleIdx');
+  const totalEl = document.getElementById('puzzleTotal');
+  totalEl.textContent = puzzles.length;
+
+  function renderPuzzle() {
+    qEl.textContent = puzzles[pIdx].q;
+    aEl.textContent = puzzles[pIdx].a;
+    aEl.classList.remove('show');
+    idxEl.textContent = pIdx + 1;
+  }
+  function openPuzzle() {
+    renderPuzzle();
+    backdrop.classList.add('open');
+  }
+  function closePuzzle() { backdrop.classList.remove('open'); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '?' && !backdrop.classList.contains('open')) {
+      // pick a random puzzle on first open
+      pIdx = Math.floor(Math.random() * puzzles.length);
+      openPuzzle();
+      e.preventDefault();
+    } else if (e.key === 'Escape' && backdrop.classList.contains('open')) {
+      closePuzzle();
+    }
+  });
+  document.getElementById('puzzleReveal').addEventListener('click', () => aEl.classList.add('show'));
+  document.getElementById('puzzleNext').addEventListener('click', () => {
+    pIdx = (pIdx + 1) % puzzles.length;
+    renderPuzzle();
+  });
+  document.getElementById('puzzleClose').addEventListener('click', closePuzzle);
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closePuzzle(); });
+</script>
+
+</body>
+</html>
