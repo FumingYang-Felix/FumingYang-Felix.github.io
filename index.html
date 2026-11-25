@@ -338,7 +338,7 @@
         </p>
       </div>
       <div class="mark" id="mark" aria-label="Fuming Yang" title="">
-        <img src="portrait.jpg" alt="Fuming Yang" />
+        <img src="portrait-2026.jpg" alt="Fuming Yang" />
       </div>
     </header>
 
@@ -357,6 +357,56 @@
     <h2 class="section-title">Selected papers</h2>
 
     <div class="work-label first">Science of AI</div>
+
+    <div class="work-item">
+      <div class="work-thumb">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- unlucky seed: scattered representation -->
+          <g fill="#c8c2b0">
+            <circle cx="9"  cy="22" r="1.8"/>
+            <circle cx="20" cy="14" r="1.8"/>
+            <circle cx="14" cy="34" r="1.8"/>
+            <circle cx="22" cy="28" r="1.8"/>
+            <circle cx="8"  cy="44" r="1.8"/>
+            <circle cx="19" cy="46" r="1.8"/>
+          </g>
+          <!-- lucky seed: structured geometry -->
+          <circle cx="47" cy="30" r="11" fill="none" stroke="#c25b3f" stroke-width="0.6" stroke-opacity="0.45"/>
+          <g fill="#c25b3f">
+            <circle class="anim-win" cx="47" cy="19" r="1.8"/>
+            <circle class="anim-win" cx="56.5" cy="24.5" r="1.8"/>
+            <circle class="anim-win" cx="56.5" cy="35.5" r="1.8"/>
+            <circle class="anim-win" cx="47" cy="41" r="1.8"/>
+            <circle class="anim-win" cx="37.5" cy="35.5" r="1.8"/>
+            <circle class="anim-win" cx="37.5" cy="24.5" r="1.8"/>
+          </g>
+          <!-- representation distillation: lucky → unlucky -->
+          <line class="anim-dash" x1="34" y1="54" x2="14" y2="54" stroke="#c25b3f" stroke-width="0.8" stroke-dasharray="2 2"/>
+          <path d="M17 51.5 L 13.5 54 L 17 56.5" stroke="#c25b3f" stroke-width="0.8" fill="none"/>
+          <text x="47" y="57" font-family="JetBrains Mono" font-size="6" fill="#8a8678" text-anchor="middle">seed</text>
+        </svg>
+      </div>
+      <div class="work-body">
+        <div class="title">
+          <a href="https://arxiv.org/abs/2611.28777">Pretraining Representation Lottery Determines Fine-Tuning Generalization</a>
+        </div>
+        <div class="meta">
+          F. Yang, C. F. Park
+          <span class="dot">·</span>
+          <span class="venue">arXiv preprint</span>
+          <span class="dot">·</span>
+          2026
+        </div>
+        <div class="blurb">
+          Seeds with matched pretraining loss generalize very differently after fine-tuning.
+          Distilling a lucky seed's representations — not its behavior — into an unlucky one
+          unlocks generalization; replicated in Pythia-160M / 410M.
+        </div>
+        <div class="links">
+          <a href="https://arxiv.org/abs/2611.28777">arxiv</a>
+        </div>
+      </div>
+    </div>
 
     <div class="work-item">
       <div class="work-thumb">
@@ -825,7 +875,7 @@
       </div>
 
       <div class="colophon">
-        Cambridge, MA &nbsp;·&nbsp; last updated 2026-06
+        Cambridge, MA &nbsp;·&nbsp; last updated 2026-11
       </div>
     </footer>
 
@@ -855,6 +905,7 @@
 
     <div class="block">
       <div class="tag">current</div>
+      <div class="line">→ <a href="https://arxiv.org/abs/2611.28777">Representation Lottery</a></div>
       <div class="line">→ <a href="https://fumingyang-felix.github.io/feature-lottery-demo/">Feature Lottery</a></div>
       <div class="line">→ <a href="#">5% SAE Lottery</a></div>
       <div class="line">→ HI-MC mSEM pipeline</div>
